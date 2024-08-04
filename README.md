@@ -1,2 +1,2 @@
 # Markups and Public Procurement
-Working Paper
+Bachelor’s Thesis, currently a Working Paper.
