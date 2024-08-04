@@ -1,2 +1,2 @@
 # Markups and Public Procurement
-Working Paper
+Bachelor Thesis and a Working Paper
