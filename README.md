@@ -12,9 +12,9 @@ Currently, I am focusing on credible treatment effect estimation. I adopted an a
 This semester, I will write my MSc thesis, where I want to implement recent approaches to causal panel data analysis, focusing on DID methodology, with a section covering: (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies, such as synthetic DID, matrix completion, and perhaps sufficient statistics/negative controls and design robust reweighting, inspired by the recent work of Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
 
 
-<p float="center">
+<p float="left">
   <img src="/average.png"/> 
-  <img src="/att.png"/>
+    <img src="/att.png"/>
   <img src="/odds.png"/>
 </p>
 
