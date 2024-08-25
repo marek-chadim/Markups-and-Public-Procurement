@@ -13,9 +13,9 @@ This semester, I will write my MSc thesis, where I want to implement recent appr
 
 
 <p float="center">
-  <img src="/average.png" width="100%" /> 
-  <img src="/att.png" width="100%" />
-  <img src="/odds.png" width="100%" />
+  <img src="/att.png"/>
+  <img src="/average.png"/> 
+  <img src="/odds.png"/>
 </p>
 
 
