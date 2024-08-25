@@ -10,10 +10,10 @@ In my thesis, after tackling these challenges, I simply compare markups using a 
 Currently, I am focusing on credible treatment effect estimation. I adopted an approach conditioning on lagged outcome values. (recent [replication material by Yiqing Xu and Guido Imbens](https://github.com/xuyiqing/lalonde) has guided my approach). In the data, firms entering public procurement in the current year already exhibit higher markups in previous years, along with larger sales, costs of goods sold, and capital. With matched data, I’ve achieved balance in these variables, and pass placebo tests of  no effect on markups in years prior to firm recovering the government contract.
 
 
-<p float="left">
-  <img src="/average.png" width="33" /> 
-  <img src="/att.png" width="33" />
-  <img src="/odds.png" width="33" />
+<p float="center">
+  <img src="/average.png" width="500" /> 
+  <img src="/att.png" width="500" />
+  <img src="/odds.png" width="500" />
 </p>
 
 
