@@ -1,4 +1,4 @@
-
+use data, clear
 set more off
 qui:
 *------FIRST STAGE POLYNOMIAL INTERACTED WITH PROCUREMENT-----------------------*
@@ -186,7 +186,7 @@ restore
 end
 *-------------------------------------------------------------------------------*
 tsset, clear
-bootstrap, cluster(id) idcluster(year) reps($bootreps): dlw_cd
+bootstrap, cluster(id) idcluster(year) reps(2): dlw_cd
 estat bootstrap
 matrix beta_dlw = e(b)
 gen k_cd = beta_dlw[1,2]
@@ -196,7 +196,7 @@ gen betahat_cd  = cogs_cd
 gen muhat_cd = betahat_cd/alphahat
 *-------------------------------------------------------------------------------*
 tsset, clear
-bootstrap, cluster(id) idcluster(year) reps($bootreps): dlw_tl
+bootstrap, cluster(id) idcluster(year) reps(2): dlw_tl
 estat bootstrap
 matrix beta_dlwtranslog = e(b)
 gen k_tl = beta_dlwtranslog[1,2]
@@ -208,6 +208,15 @@ gen omegahat_tl = phi-k_tl*k-cogs_tl*cogs-k2_tl*k2-cogs2_tl*cogs2-kcogs_tl*k1cog
 gen betahat_tl = cogs_tl+2*cogs2_tl*cogs+kcogs_tl*k
 gen muhat_tl = betahat_tl/alphahat
 *-------------------------------------------------------------------------------*
+
+rename muhat_tl markup
+keep id year nace2 legal_form subject_type inst_sector empl* ///
+						go cogs k w pp_dummy pp_share markup 
+destring legal_form, replace
+destring subject_type, replace
+destring inst_sector, replace
+destring empl_cat, replace
+save markups, replace
 
 
 
