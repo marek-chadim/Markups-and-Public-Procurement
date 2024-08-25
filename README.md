@@ -11,10 +11,9 @@ Currently, I am focusing on credible treatment effect estimation. I adopted an a
 
 
 <p float="left">
-
-  <img src="/average.png" width="100" /> 
-  <img src="/att.png" width="100" />
-  <img src="/odds.png" width="100" />
+  <img src="/average.png" width="33" /> 
+  <img src="/att.png" width="33" />
+  <img src="/odds.png" width="33" />
 </p>
 
 
