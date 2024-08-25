@@ -13,8 +13,8 @@ This semester, I will write my MSc thesis, where I want to implement recent appr
 
 
 <p float="center">
-  <img src="/att.png"/>
   <img src="/average.png"/> 
+  <img src="/att.png"/>
   <img src="/odds.png"/>
 </p>
 
