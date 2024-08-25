@@ -9,15 +9,14 @@ In my thesis, after tackling these challenges, I simply compare markups using a 
 
 Currently, I am focusing on credible treatment effect estimation. I adopted an approach conditioning on lagged outcome values. (recent [replication material by Yiqing Xu and Guido Imbens](https://github.com/xuyiqing/lalonde) has guided my approach). In the data, firms entering public procurement in the current year already exhibit higher markups in previous years, along with larger sales, costs of goods sold, and capital. With matched data, I’ve achieved balance in these variables, and pass placebo tests of  no effect on markups in years prior to firm recovering the government contract.
 
+This semester, I will write my MSc thesis, where I want to implement recent approaches to causal panel data analysis, focusing on DID methodology, with a section covering: (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies, such as synthetic DID, matrix completion, and perhaps sufficient statistics/negative controls and design robust reweighting, inspired by the recent work of Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
+
 
 <p float="center">
-  <img src="/average.png" width="50%" /> 
-  <img src="/att.png" width="50%" />
-  <img src="/odds.png" width="50%" />
+  <img src="/average.png" width="100%" /> 
+  <img src="/att.png" width="100%" />
+  <img src="/odds.png" width="100%" />
 </p>
-
-
-This semester, I will write my MSc thesis, where I want to implement recent approaches to causal panel data analysis, focusing on DID methodology, with a section covering: (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies, such as synthetic DID, matrix completion, and perhaps sufficient statistics/negative controls and design robust reweighting, inspired by the recent work of Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
 
 
 
