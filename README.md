@@ -9,9 +9,9 @@ In my thesis, after tackling these challenges, I simply compare markups using a 
 
 Currently, I am focusing on credible treatment effect estimation. I adopted an approach conditioning on lagged outcome values. (recent [replication material by Yiqing Xu and Guido Imbens](https://github.com/xuyiqing/lalonde) has guided my approach). In the data, firms entering public procurement in the current year already exhibit higher markups in previous years, along with larger sales, costs of goods sold, and capital. With matched data, I’ve achieved balance in these variables, and pass placebo tests of  no effect on markups in years prior to firm recovering the government contract.
 
-[](odds.png)
-[](average.png)
-[](att.png)
+[](https://github.com/marek-chadim/Markups-and-Public-Procurement/blob/main/odds.png)
+[](https://github.com/marek-chadim/Markups-and-Public-Procurement/blob/main/average.png)
+[]((https://github.com/marek-chadim/Markups-and-Public-Procurement/blob/main/att.png))
 
 This semester, I will write my MSc thesis, where I want to implement recent approaches to causal panel data analysis, focusing on DID methodology, with a section covering: (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies, such as synthetic DID, matrix completion, and perhaps sufficient statistics/negative controls and design robust reweighting, inspired by the recent work of Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
 
