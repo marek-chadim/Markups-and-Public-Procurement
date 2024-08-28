@@ -10,24 +10,20 @@ Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace
 
 - In revision for the [The Young Economist Award of the Czech Economic Society](https://cse.cz/en/page/31st-young-economist-of-the-year-award), my focus is on credible treatment effect estimation. I have adopted a methodology that conditions on lagged outcome values, informed by recent replication materials from Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. By employing matched data, I have achieved balance in these variables and successfully passed placebo tests, confirming no effect on markups in the years preceding firms' acquisition of government contracts.
 
+- This semester, I will complete my MSc thesis, in which I intend to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with particular emphasis on the Difference-in-Differences (DID) methodology. This section will encompass (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics/negative controls and design-robust reweighting, inspired by recent work by Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
+
+Methodology and replication package reference: 
+
+1. Jan De Loecker & Frederic Warzynski AER 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
+
+2. De Loecker, Eeckhout, Unger QJE 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
+    
+3. Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
 
 <p float="left">
   <img src="/average.png"/> 
   <img src="/att.png"/>
 </p>
-
-
-- This semester, I will complete my MSc thesis, in which I intend to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with particular emphasis on the Difference-in-Differences (DID) methodology. This section will encompass (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics/negative controls and design-robust reweighting, inspired by recent work by Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
-
-
-
-Methodology and replication package reference: 
-
-Jan De Loecker & Frederic Warzynski AER 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
-
-De Loecker, Eeckhout, Unger QJE 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
-    
-Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
 
 
 
