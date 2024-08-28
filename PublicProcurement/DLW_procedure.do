@@ -209,6 +209,7 @@ gen betahat_tl = cogs_tl+2*cogs2_tl*cogs+kcogs_tl*k
 gen muhat_tl = betahat_tl/alphahat
 *-------------------------------------------------------------------------------*
 
+/*
 rename muhat_tl markup
 keep id year nace2 legal_form subject_type inst_sector empl* ///
 						go cogs k w pp_dummy pp_share markup 
