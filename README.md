@@ -22,7 +22,7 @@ This semester, I will write my MSc thesis, where I plan to implement recent appr
 
 Methodology and replication package reference: 
 
-Jan De Loecker & Frederic Warzynski AER 2012 ["Markups and Firm-Level Export Status"](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
+Jan De Loecker & Frederic Warzynski AER 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
 
 De Loecker, Eeckhout, Unger QJE 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
     
