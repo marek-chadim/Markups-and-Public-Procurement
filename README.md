@@ -1,6 +1,6 @@
 
 # Markups and Public Procurement.
-Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links).
+Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
 Text stored in repository document MarkupsAndPublicProcurement.pdf
 
