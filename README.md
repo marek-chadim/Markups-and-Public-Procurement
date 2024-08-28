@@ -1,5 +1,5 @@
 
-# Chadim, M. (2023) Markups and Public Procurement.
+# Markups and Public Procurement.
 Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
 To provide context, I use financial statement data from firms in the Czech construction industry. By linking this data with information from a public procurement database, I have created a firm-year indicator that identifies whether a firm was involved in public procurement and the share of its sales attributable to such contracts. My thesis, initially motivated by an undergraduate Industrial Organization course, primarily addresses the econometric challenges of estimating production functions and firm-level markups. In my study, the public procurement status plays a role similar to that of export status in the work by De Loecker and Warzynski (2012).
