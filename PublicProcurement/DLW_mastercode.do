@@ -32,10 +32,10 @@ xtset id year, yearly
 set seed 42
 do DLW_procedure.do
 
-
 *-------------------------------------------------------------------------------*
 * Table 1: Table 1 Public Procurement in Czech Construction industry
 tabstat pp_dummy, by(year) stat(N sum) format(%4.0f)
+by id : egen pp_mean = mean(pp_dummy)
 
 codebook inst_sector
 encode inst_sector, generate(ownership)
