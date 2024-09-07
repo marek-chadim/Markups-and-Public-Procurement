@@ -1,5 +1,14 @@
 
 # Markups and Public Procurement.
+
+<p float="left">
+  <img src="/Fig1.png"/>
+  <img src="/Fig2a.png"/> 
+  <img src="/Fig2b.png"/>
+  <img src="/Fig3.png"/>
+  <img src="/Fig4.png"/>
+</p>
+
 Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
 Text stored in repository document MarkupsAndPublicProcurement.pdf
