@@ -8,6 +8,8 @@ Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace
 Text stored in repository document MarkupsAndPublicProcurement.pdf
 
 - I utilize financial statement data from firms within the Czech construction industry. By integrating these data with information from a public procurement database, I have developed a firm-year indicator identifying whether a firm participated in public procurement and the proportion of its sales derived from such contracts. My thesis, initially inspired by an undergraduate course in Industrial Organization, primarily addresses the econometric challenges associated with estimating production functions and firm-level markups. In my analysis, public procurement status serves a role analogous to export status in the work of De Loecker and Warzynski (2012).
+  
+<img src="/Fig1.png" width="80%"/> 
 
 - Over the summer, I enhanced the estimation procedure by replacing the initially used user-written Stata command markupest (Rovigatti, 2020) with the original Stata GMM routine provided by De Loecker and Warzynski. Despite numerous methodological critiques—such as those by Gandhi et al. (2020) on the identification of gross output production functions and by Bond et al. (2021) on the estimation of production function elasticities—I have decided to retain this approach.
 
@@ -21,7 +23,6 @@ Methodology and replication package reference:
 
 1. DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437), DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
 
-<img src="/Fig1.png" width="80%"/> 
 
 <p float="left">
   <img src="/Fig2a.png" width="45%"/> 
