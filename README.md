@@ -17,8 +17,21 @@ Text stored in repository document MarkupsAndPublicProcurement.pdf
 Methodology and replication package reference: 
 
 1. DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437), DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
+
+
+<p float="left">
+  <img src="/Fig1.png"/>
+  <img src="/Fig2a.png"/> 
+  <img src="/Fig2b.png"/>
+  <img src="/Fig3.png"/>
+  <img src="/Fig4.png"/>
+</p>
+
+
+
+
     
-3. Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
+2. Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
 
 <p float="left">
   <img src="/Rplot02.png"/>
