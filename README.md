@@ -3,7 +3,7 @@
 
 Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
-<img src="/Fig1.png" width="100%"/> 
+
 
 Text stored in repository document MarkupsAndPublicProcurement.pdf
 
@@ -23,7 +23,7 @@ Methodology and replication package reference:
 
 1. DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437),
    DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
-
+<img src="/Fig1.png" width="100%"/> 
 <p float="left">
   <img src="/Fig2a.png" width="45%"/> 
   <img src="/Fig2b.png" width="45%"/> 
