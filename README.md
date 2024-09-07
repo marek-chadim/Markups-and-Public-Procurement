@@ -25,13 +25,13 @@ Methodology and replication package reference:
    DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
 <img src="/Fig1.png" width="100%"/> 
 <p float="left">
-  <img src="/Fig2a.png" width="50%"/> 
-  <img src="/Fig2b.png" width="50%"/> 
+  <img src="/Fig2a.png" width="48%"/> 
+  <img src="/Fig2b.png" width="48%"/> 
 </p>
 
 <p float="left">
-  <img src="/Fig3.png" width="50%"/>
-  <img src="/Fig4.png" width="50%"/>
+  <img src="/Fig3.png" width="48%"/>
+  <img src="/Fig4.png" width="48%"/>
 </p>
 
 
