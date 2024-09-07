@@ -13,11 +13,11 @@ Text stored in repository document MarkupsAndPublicProcurement.pdf
 <p float="left">
   <img src="/Fig1.png" width="100%"/> 
 
-  <img src="/Fig2a.png" width="50%"/> 
-  <img src="/Fig2b.png" width="50%"/> 
+  <img src="/Fig2a.png" width="49%"/> 
+  <img src="/Fig2b.png" width="49%"/> 
 
-  <img src="/Fig3.png" width="50%"/>
-  <img src="/Fig4.png" width="50%"/>
+  <img src="/Fig3.png" width="49%"/>
+  <img src="/Fig4.png" width="49%"/>
 </p>
     
 
