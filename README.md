@@ -11,16 +11,14 @@ Text stored in repository document MarkupsAndPublicProcurement.pdf
 
 - Over the summer, I enhanced the estimation procedure by replacing the initially used user-written Stata command markupest (Rovigatti, 2020) with the original Stata GMM routine provided by De Loecker and Warzynski. Despite numerous methodological critiques—such as those by Gandhi et al. (2020) on the identification of gross output production functions and by Bond et al. (2021) on the estimation of production function elasticities—I have decided to retain this approach.
 
-  <img src="/Fig1.png" width="96%"/> 
-<p float="left">
-  <img src="/Fig2a.png" width="48%"/> 
-  <img src="/Fig2b.png" width="48%"/> 
-</p>
+  <img src="/Fig1.png" width="100%"/> 
 
-<p float="left">
-  <img src="/Fig3.png" width="48%"/>
-  <img src="/Fig4.png" width="48%"/>
-</p>
+  <img src="/Fig2a.png" width="50%"/> 
+  <img src="/Fig2b.png" width="50%"/> 
+
+  <img src="/Fig3.png" width="50%"/>
+  <img src="/Fig4.png" width="50%"/>
+
     
 
 - In my thesis, after resolving these challenges, I compare markups using both a pooled OLS regression and a two-way fixed effects model.
