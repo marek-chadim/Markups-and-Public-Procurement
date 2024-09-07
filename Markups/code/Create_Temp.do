@@ -17,6 +17,7 @@ label var mu_med "markup median costshare
 * OUTPUT ELASTICITIES ESTIMATED VIA PF ESTIMATION - PARAMETERS F(COGS, K) 
 preserve
 set more off
+set seed 42
 qui:
 *------FIRST STAGE POLYNOMIAL INTERACTED WITH PROCUREMENT-----------------------*
 local M=3
@@ -28,8 +29,8 @@ forvalues i=1/`M' {
         gen k`i'cogs`j'=k^(`i')*cogs^(`j')
     }
 }
-drop k1 cogs1 k1cogs3 k2cogs2 k2cogs3 k3cogs*
-xi: reg go c.k*#pp_dummy c.cogs*#pp_dummy year#pp_dummy
+drop k1 cogs1
+xi: reg go c.k*#pp_dummy c.cogs*#pp_dummy year##nace2
 predict phi
 predict epsilon, res
 *---COMPUTE CORRECTED SHARES----------------------------------------------------*
@@ -56,15 +57,15 @@ drop if Lcogs == .
 drop if phi == .
 drop if Lphi == .
 drop if Lpp == .
-*----------OLS REGRESSION FOR STARTING VALUES----------------------------------*
-qui: reg go k cogs k2 cogs2 k1cogs1 i.year
+*------------- DYNAMIC PANEL FOR STARTING VALUES--------------------------------*
+xtabond2 go L.go L(0/1).(k cogs k2 cogs2 k1cogs1) i.year, ///
+	 gmmstyle(L.(cogs cogs2) k k2 kLcogs) ivstyle(i.year, equation(level)) 
 local cons_ols_tl = _b[_cons]
-mat b = e(b)
-local k_ols_tl = b[1,1]
-local cogs_ols_tl = b[1,2]
-local k2_ols_tl = b[1,3]
-local cogs2_ols_tl = b[1,4]
-local kcogs_ols_tl = b[1,5]
+local k_ols_tl = _b[k]
+local cogs_ols_tl = _b[cogs]
+local k2_ols_tl = _b[k2]
+local cogs2_ols_tl = _b[cogs2]
+local kcogs_ols_tl = _b[k1cogs1]
 *-----------------------------BEGIN MATA PROGRAM-------------------------------*
 clear mata
 mata:
@@ -76,7 +77,7 @@ void GMM_DLW_TL(todo,betas,PHI,PHI_LAG,PP_lag,Z,X,X_lag,W,crit,g,H)
     Z=st_data(.,("const","k","Lcogs","k2","Lcogs2","kLcogs"))
     X=st_data(.,("const","k","cogs","k2","cogs2","kcogs"))
     X_lag=st_data(.,("const","Lk","Lcogs","Lk2","Lcogs2","LkLcogs"))
-	W = invsym(Z'Z)
+	W = invsym(Z'Z)/rows(Z)
     C=st_data(.,("const"))
 
 	OMEGA=PHI-X*betas'
@@ -101,8 +102,8 @@ optimize_init_argument(S, 6, X_lag)
 optimize_init_argument(S, 7, W)
 optimize_init_params(S,(`cons_ols_tl',`k_ols_tl',`cogs_ols_tl', ///
 						`k2_ols_tl',`cogs2_ols_tl',`kcogs_ols_tl'))
-optimize_init_evaluator(S, &GMM_DLW_TL())						
-optimize_init_nmsimplexdeltas(S, 0.01)
+optimize_init_evaluator(S, &GMM_DLW_TL())			
+optimize_init_nmsimplexdeltas(S, 1e-5)
 optimize_init_technique(S, "nm")
 optimize_init_which(S,"min")
 optimize_init_conv_warning(S, "off")

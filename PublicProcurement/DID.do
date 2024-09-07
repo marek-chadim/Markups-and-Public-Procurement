@@ -16,21 +16,29 @@ bys id: gen x2 = k[1]
 bys id: gen x3 = cogs[1]
 bys id: gen x4 = w[1]
 
-panelview Y D, i(id) t(year) type(treat) collapsehistory bytiming
- 
-panelview Y D, i(id) t(year) type(outcome)
- 
-panelview Y D, i(id) t(year) xlabdist(7) type(bivariate) msize(*0.5) style(c b) 
+*panelview Y D, i(id) t(year) type(treat) collapsehistory bytiming
+*panelview Y D, i(id) t(year) type(outcome)
+*panelview Y D, i(id) t(year) xlabdist(7) type(bivariate) msize(*0.5) style(c b) 
+
+reghdfe Y D, a(id nace2##year)
+preserve
+bys id: gen nyear=[_N]
+bys id: gen D1=D[1]
+keep if nyear==16
+drop if D1
+sdid Y id year D, vce(bootstrap) graph graph_export(sdid_, .eps) g1_opt(xtitle(""))  covariates(nace2) 
+sdid_event Y id year D, vce(bootstrap) covariates(nace2)  placebo(3)
+restore
 
 
+did2s Y, first_stage(i.id year##nace2 x*) second_stage(pp_dummy) treatment(pp_dummy) cluster(i)
 
-
-			
 // Estimation with did_imputation of Borusyak et al. (2021)
 did_imputation Y i t Ei, horizons(1/12) pretrend(13) autosample fe(i t#nace2) unitcontrols(x*)
 event_plot, default_look graph_opt(xtitle("Periods since the event") ytitle("Average causal effect") ///
 	title("Borusyak et al. (2021) imputation estimator") xlabel(-13(1)12))
-
+tab cannot_impute
+tab cannot_impute if pp_mean!=1
 estimates store bjs // storing the estimates for later
 
 // Estimation with cldid of Callaway and Sant'Anna (2020)

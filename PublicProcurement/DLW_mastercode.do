@@ -35,33 +35,23 @@ do DLW_procedure.do
 *-------------------------------------------------------------------------------*
 * Table 1: Table 1 Public Procurement in Czech Construction industry
 tabstat pp_dummy, by(year) stat(N sum) format(%4.0f)
-by id : egen pp_mean = mean(pp_dummy)
 
-codebook inst_sector
-encode inst_sector, generate(ownership)
-tabstat pp_dummy, by(ownership) stat(N sum) format(%4.0f)
+
 *------------------------------------------------------------------------------*
 *Table 2: Estimated Markups
-tabstat muhat_tl, by(ownership) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
 tabstat muhat_tl, by(pp_dummy) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
-
-tabstat muhat_cd, by(ownership) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
-tabstat muhat_cd, by(year) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
-tabstat muhat_cd, by(pp_dummy) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
+tabstat muhat_tl, by(year) stat(p10 p25 p50 mean p75 p90) format(%4.2f)
 
 //1 translog acf + endog. process g(omega,procurement)
 gen lmu_1=ln(muhat_tl)
 gen omega_1 = omegahat_tl
 
-//2 cobb-douglas acf + endog. process g(omega,procurement)
-gen lmu_2=ln(muhat_cd)
-gen omega_2= omegahat_cd
 *------------------------------------------------------------------------------*
 * The results in tables 3 and 4 get produced with following code:
 
 * Table 3: Markups and Procurement Status I
-forvalues j=1/2  {
-reghdfe lmu_`j' pp_dummy, a(id year) cluster(id year)
+forvalues j=1/1  {
+reghdfe lmu_`j' pp_dummy, a(id year) cluster(id)
 
 * computing markup difference for tables
 gen theta_`j'_0=_b[_cons]
@@ -80,22 +70,19 @@ gen theta_`j'_omega=_b[pp_dummy]
 }
 
 *cross sectional results, markup premium procurement: precentage and levels
-tabstat theta_1_1 theta_2_1 mu_pp1 mu_pp2
+tabstat theta_1_1  mu_pp1 
 
 *cross sectional results: percentage procurement premium controlling for productivity
-tabstat theta_1_omega theta_2_omega
+tabstat theta_1_omega 
 
 *cross sectional results: productivity-markup relationship
-tabstat theta_omega1 theta_omega2
+tabstat theta_omega1 
 
-*coefficients on interaction term give markup premium for a subindustry
-forvalues j=1/2{
-reghdfe  lmu_`j' pp_dummy#nace2,  a(year ownership) cluster(id)
-}
 
 *coefficients on interaction term give markup premium for a inditutional sector
-forvalues j=1/2{
-reghdfe  lmu_`j' pp_dummy#ownership,  a (year nace2) cluster(id)
+encode inst_sector, generate(ownership)
+forvalues j=1/1{
+reghdfe  lmu_`j' pp_dummy#ownership,  a(year nace2) cluster(id)
 }
 
 * Table 4: Markups and Procurement Status II: Procurement Entry Effect
@@ -118,8 +105,8 @@ gen entry_effect=starter*pp_dummy
 gen exit_effect=stopper*pp_dummy
 * value exit_effect is 1 pre procurement exit, so take - coefficient for effect.
 
-forvalues j=1/2 {
-reghdfe lmu_`j' entry_effect exit_effect if switcher==., absorb(id year) cluster(id year)
+forvalues j=1/1 {
+reghdfe lmu_`j' entry_effect exit_effect if switcher==., absorb(id year) cluster(id)
 gen gamma_`j'_0=_b[_cons]
 gen gamma_`j'_0_se=_se[_cons]
 gen gamma_`j'_1=_b[entry_effect]
@@ -131,7 +118,7 @@ gen gamma_`j'_2_se=_se[exit_effect]
 gen mu_start`j'=gamma_`j'_1*exp(gamma_`j'_0)
 
 * again with productivity included:
-reghdfe lmu_`j' entry_effect exit_effect omega_`j' if switcher==., absorb(id year)  cluster(id year)
+reghdfe lmu_`j' entry_effect exit_effect omega_`j' if switcher==., absorb(id year)  cluster(id)
 gen gamma_`j'_omega=_b[entry_effect]
 }
 

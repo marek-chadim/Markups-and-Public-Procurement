@@ -12,7 +12,7 @@ clear all
 set more off
 set scheme lean2
 if "`c(username)'"=="chadi" {
-	local dropbox "~/OneDrive - Handelshögskolan i Stockholm/CodeAndData/Markups/"
+	local dropbox "~/OneDrive - Handelshögskolan i Stockholm/MarkupsAndPublicProcurement/Markups-and-Public-Procurement/Markups/"
 	}
 global dropbox  = "`dropbox'"
 global bootreps = 2
@@ -29,6 +29,7 @@ do "code/Create_Temp.do"
 * Create figures¨
 cd "$dropbox"
 do "code/Create_Output.do"
+
 
 * erase all files in temp file
 cd "$dropbox"

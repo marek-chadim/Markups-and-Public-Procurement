@@ -11,55 +11,55 @@ preserve
 sort year
 drop if year==year[_n-1]
 sort year
-scatter markup MARKUP_AGG MARKUP_AGG_w year, c(l) lcolor(red ) lpattern(solid) symbol(none) lwidth(thick) ytitle("") xlabel(2006 2009 2012 2015 2018 2021) xtitle("") legend(ring(0)  pos(5) ) 
-graph export Fig1.eps, replace
-scatter markup MARKUP_AGG MARKUP_AGG_w year, c(l) lcolor(black ) lpattern(solid) symbol(none) lwidth(thick) ytitle("") xlabel(2006 2009 2012 2015 2018 2021) xtitle("") legend(ring(0)  pos(5) ) 
-graph export BW/Fig1.eps, replace
+scatter MARKUP_AGG MARKUP_AGG_w year, c(l) lcolor(red ) lpattern(solid) symbol(none) lwidth(thick) ytitle("") xlabel(2006 2009 2012 2015 2018 2021) xtitle("") legend(ring(0)  pos(5) ) 
+graph export Fig1.png, replace
+scatter MARKUP_AGG MARKUP_AGG_w year, c(l) lcolor(black ) lpattern(solid) symbol(none) lwidth(thick) ytitle("") xlabel(2006 2009 2012 2015 2018 2021) xtitle("") legend(ring(0)  pos(5) ) 
+graph export BW/Fig1.png, replace
 *---------------------------------------------------------------------------------------------------------------------------*
 * Fig 2a 2b Distribution of markups
 label var mu_ms90 "P90
 label var mu_ms50 "P50
 label var mu_ms75 "P75
 label var MARKUP_AGG "Average (Sales Weight)
-scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )  msymbol(none none none none ) color(red red red red) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) ylabel(1 1.5 2 2.5) legend(ring(0)  pos(10) )   sort
-graph export Fig2a.eps, replace
-scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )  msymbol(none none none none ) color(black black black black) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) ylabel(1 1.5 2 2.5) legend(ring(0)  pos(10) )   sort
-graph export BW/Fig2a.eps, replace
+scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )  msymbol(none none none none ) color(red red red red) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(10) )   sort
+graph export Fig2a.png, replace
+scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )   msymbol(none none none none ) color(black black black black) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(10) )   sort
+graph export BW/Fig2a.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
 preserve
-drop if mu>3
-twoway (kdensity mu if (year==2006) , kernel(gaussian) xlabel(1 2 3) lcolor(red) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(red) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "public market") label(2 "private market")  ) )
-graph export Fig2b.eps, replace
-twoway (kdensity mu if (year==2006) , kernel(gaussian) xlabel(1 2 3) lcolor(black) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(black) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "public market") label(2 "private market")  ) )
-graph export BW/Fig2b.eps, replace
+drop if mu>2.5
+twoway (kdensity mu if (year==2006) , kernel(gaussian) lcolor(red) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(red) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "2006") label(2 "2021")  ) )
+graph export Fig2b.png, replace
+twoway (kdensity mu if (year==2006) , kernel(gaussian) lcolor(black) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(black) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "2006") label(2 "2021")  ) )
+graph export BW/Fig2b.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
-* Fig 3 Cost-share based aggregated technology 
+*Fig 3 Cost-share based aggregated technology 
 preserve
 sort year
 drop if year==year[_n-1]
-label var elasticity_W "Elasticity V
-label var COSTSHARE_AGG "Cost Share V
-scatter elasticity_W COSTSHARE_AGG year, c(l l )  lcolor(red red) lpattern(solid dash ) msymbol(none none) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) pos(8) col(1)) 
-graph export Fig3.eps, replace
-scatter elasticity_W COSTSHARE_AGG year, c(l l )  lcolor(black black) lpattern(solid dash ) msymbol( none none ) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) pos(8) col(1)) 
-graph export BW/Fig3.eps, replace
+label var elasticity_W "Variable Input Elasticity (Sales Weight)
+label var COSTSHARE_AGG "Variable Input Cost Share (Sales Weight)
+scatter elasticity_W COSTSHARE_AGG year, c(l l )  lcolor(red red)  lpattern(solid dash ) msymbol(none none) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) pos(8) col(1)) 
+graph export Fig3.png, replace
+scatter elasticity_W COSTSHARE_AGG year, c(l l )  lcolor(black black)  lpattern(solid dash ) msymbol( none none ) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) pos(8) col(1)) 
+graph export BW/Fig3.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
-* Fig 4a 4b Returns to scale and Markups
+* Fig 4 Returns to scale
 preserve
 sort year
 drop if year==year[_n-1]
 label var gamma_RTS1 "RTS (firm)
 label var gamma_RTS2 "RTS (aggregate)
 scatter gamma_RTS1 gamma_RTS2 year , c(l l) lcolor(green green) ysc(r(.95 1.1)) lpattern(solid dash) yline(1) msymbol(none none) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) col(1) pos(11) ) 
-graph export Fig4a.eps, replace
+graph export Fig4.png, replace
 scatter gamma_RTS1 gamma_RTS2 year , c(l l) lcolor(black black) ysc(r(.95 1.1)) lpattern(solid dash) yline(1) msymbol(none none) lwidth(thick thick) ytitle("") xlabel(2006 2021) xtitle("") legend(ring(0) col(1) pos(11) ) 
-graph export BW/Fig4a.eps, replace
+graph export BW/Fig4.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
-preserve
+/*preserve
 sort year
 drop if year==year[_n-1]
 forvalues s=1/2 {
@@ -68,12 +68,12 @@ gen MARKUP_AGG_g`s' = MARKUPcs_AGG*gamma_RTS`s'
 label var MARKUP_AGG_g1 "Cost Share (firm) Returns to Scale
 label var MARKUP_AGG_g2 "Cost Share (industry mean) Returns to Scale
 scatter MARKUP_AGG MARKUP_AGG_g1 MARKUP_AGG_g2 year, c(l l) lcolor(blue blue) lpattern(solid dash) symbol(none none) lwidth(thick thick) ylabel() xlabel(2006 2021) xtitle("") legend(ring(0)  pos(11)) 
-graph export Fig5b.eps, replace 
+graph export Fig4b.png, replace 
 scatter MARKUP_AGG MARKUP_AGG_g1 MARKUP_AGG_g2 year, c(l l) lcolor(black black) lpattern(solid dash) symbol(none none) lwidth(thick thick) ylabel() xlabel(2006 2021) xtitle("") legend(ring(0)  pos(11)) 
-graph export BW/Fig5b.eps, replace 
+graph export BW/Fig4b.png, replace 
 restore
 *-------------------------------------------------------------------------------------------------------------------------*
-* APPENDIX
+/* APPENDIX
 cd "$dropbox"
 use "temp/temp_file.dta", clear
 cd "output/figures/"
