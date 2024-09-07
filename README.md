@@ -11,7 +11,7 @@ Text stored in repository document MarkupsAndPublicProcurement.pdf
 
 - Over the summer, I enhanced the estimation procedure by replacing the initially used user-written Stata command markupest (Rovigatti, 2020) with the original Stata GMM routine provided by De Loecker and Warzynski. Despite numerous methodological critiques—such as those by Gandhi et al. (2020) on the identification of gross output production functions and by Bond et al. (2021) on the estimation of production function elasticities—I have decided to retain this approach.
 <p float="left">
-  <img src="/Fig1.png" width="100%"/> 
+  <img src="/Fig1.png" width="98%"/> 
 
   <img src="/Fig2a.png" width="49%"/> 
   <img src="/Fig2b.png" width="49%"/> 
