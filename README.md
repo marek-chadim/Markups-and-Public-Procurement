@@ -21,8 +21,9 @@ Methodology and replication package reference:
 3. Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
 
 <p float="left">
-  <img src="/Rplot02.png"/>
+  <img src="/Rplot01.png"/>
   <img src="/Rplot03.png"/> 
+  <img src="/Rplot02.png"/>
 </p>
 
 
