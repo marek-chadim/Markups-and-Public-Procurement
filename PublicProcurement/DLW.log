@@ -1,8 +1,9 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\chadi\OneDrive - Handelshögskolan i Stockholm\MarkupsAndPublicProcurement\Markups-and-Public-Procurement\PublicProcurement\DLW.log
+       log:  C:\Users\chadi\OneDrive - Handelshögskolan i Stockholm\MarkupsAndPublicProcurement\Markups-and-Public-Procurement\PublicP
+> rocurement\DLW.log
   log type:  text
- opened on:   5 Sep 2024, 10:53:18
+ opened on:   9 Sep 2024, 01:22:06
 
 . use data, clear
 
@@ -179,14 +180,14 @@ pp_dummy#c.k3cogs3 |
 
 . bys pp_dummy: sum alphahat
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 -> pp_dummy = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
     alphahat |      5,675    .5123919    .0723942   .1178826   1.029019
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 -> pp_dummy = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -333,7 +334,8 @@ Difference-in-Sargan tests of exogeneity of instrument subsets:
   GMM instruments for levels
     Sargan test excluding group:     chi2(556)  = 500.91  Prob > chi2 =  0.954
     Difference (null H = exogenous): chi2(73)   = 220.09  Prob > chi2 =  0.000
-  iv(2006b.year 2007.year 2008.year 2009.year 2010.year 2011.year 2012.year 2013.year 2014.year 2015.year 2016.year 2017.year 2018.year 2019.year 2020.year 2021.year, eq(level))
+  iv(2006b.year 2007.year 2008.year 2009.year 2010.year 2011.year 2012.year 2013.year 2014.year 2015.year 2016.year 2017.year 2018.yea
+> r 2019.year 2020.year 2021.year, eq(level))
     Sargan test excluding group:     chi2(615)  = 697.84  Prob > chi2 =  0.011
     Difference (null H = exogenous): chi2(14)   =  23.16  Prob > chi2 =  0.058
 
@@ -357,7 +359,7 @@ Difference-in-Sargan tests of exogeneity of instrument subsets:
 . clear mata
 
 . mata:
-------------------------------------------------- mata (type end to exit) -------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- mata (type end to exit) ------------------------------------------------------------
 : 
 : void GMM_DLW_TL(todo,betas,PHI,PHI_LAG,PP_lag,Z,X,X_lag,W,crit,g,H)
 > {
@@ -419,7 +421,7 @@ note: variable X_lag may be used before set.
 note: variable W may be used before set.
 
 : end
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 
 . *-------------------------------END MATA PROGRAM--------------------------------*
 . cap program drop dlw_tl
@@ -446,8 +448,9 @@ note: variable W may be used before set.
 . bootstrap, cluster(id) idcluster(year) reps(2): dlw_tl
 (running dlw_tl on estimation sample)
 
-warning: dlw_tl does not set e(sample), so no observations will be excluded from the resampling because of missing values or other reasons. To exclude observations, press Break, save the data, drop any observations that are to be
-         excluded, and rerun bootstrap.
+warning: dlw_tl does not set e(sample), so no observations will be excluded from the resampling because of missing values or other
+         reasons. To exclude observations, press Break, save the data, drop any observations that are to be excluded, and rerun
+         bootstrap.
 
 Bootstrap replications (2): .. done
 
@@ -514,14 +517,14 @@ Key: BC: Bias-corrected
 
 . bys pp_dummy: sum muhat*
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 -> pp_dummy = 0
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
    muhat_dlw |      4,034    1.380222    .1862844   .7964074   3.302052
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 -> pp_dummy = 1
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -531,7 +534,8 @@ Key: BC: Bias-corrected
 
 . log close
       name:  <unnamed>
-       log:  C:\Users\chadi\OneDrive - Handelshögskolan i Stockholm\MarkupsAndPublicProcurement\Markups-and-Public-Procurement\PublicProcurement\DLW.log
+       log:  C:\Users\chadi\OneDrive - Handelshögskolan i Stockholm\MarkupsAndPublicProcurement\Markups-and-Public-Procurement\PublicP
+> rocurement\DLW.log
   log type:  text
- closed on:   5 Sep 2024, 10:53:30
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:   9 Sep 2024, 01:22:14
+--------------------------------------------------------------------------------------------------------------------------------------
