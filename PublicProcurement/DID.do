@@ -1,5 +1,5 @@
 clear all
-use DID
+*use estimates
 drop K
 gen i = id 
 gen t = year-2005

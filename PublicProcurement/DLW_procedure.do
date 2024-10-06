@@ -140,10 +140,11 @@ gen muhat_dlw = betahat_dlw/alphahat
 sum betahat*
 bys pp_dummy: sum muhat*
 log close
-/*
+
 rename muhat_dlw markup
 encode subject_type, generate(subject)
 encode inst_sector, generate(sector)
 replace empl_num = 0 if empl_num==.
-egen empl = cut(empl_num), group(5) label
+egen empl = cut(empl_num), group(4) label
 save markups,replace
+export delimited using markups, replace

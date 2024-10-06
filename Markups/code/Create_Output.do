@@ -21,9 +21,9 @@ label var mu_ms90 "P90
 label var mu_ms50 "P50
 label var mu_ms75 "P75
 label var MARKUP_AGG "Average (Sales Weight)
-scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )  msymbol(none none none none ) color(red red red red) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(10) )   sort
+scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )  msymbol(none none none none ) color(red red red red) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(2) )   sort 
 graph export Fig2a.png, replace
-scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )   msymbol(none none none none ) color(black black black black) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(10) )   sort
+scatter  MARKUP_AGG mu_ms90 mu_ms75 mu_ms50 year, connect(l l l l )   msymbol(none none none none ) color(black black black black) lpattern(solid dash shortdash longdash_dot) lwidth(thick thick thick thick) xtitle("") xlabel(2006 2009 2012 2015 2018 2021) legend(ring(0)  pos(2) )   sort name(a)
 graph export BW/Fig2a.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
@@ -31,8 +31,10 @@ preserve
 drop if mu>2.5
 twoway (kdensity mu if (year==2006) , kernel(gaussian) lcolor(red) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(red) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "2006") label(2 "2021")  ) )
 graph export Fig2b.png, replace
-twoway (kdensity mu if (year==2006) , kernel(gaussian) lcolor(black) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(black) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "2006") label(2 "2021")  ) )
+twoway (kdensity mu if (year==2006) , kernel(gaussian) lcolor(black) lwidth(thick) ) (kdensity mu if (year==2021),  kernel(gaussian)  lcolor(black) ytitle("") xtitle("") clpattern(dash) lwidth(thick) graphregion(color(white) )  legend(ring(0)  col(1) pos(2) label(1 "2006") label(2 "2021") ) name(b) ) 
 graph export BW/Fig2b.png, replace
+graph combine a b
+graph export BW/Fig2.png, replace
 restore
 *---------------------------------------------------------------------------------------------------------------------------*
 *Fig 3 Cost-share based aggregated technology 
