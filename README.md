@@ -1,15 +1,30 @@
 
 # Markups and Public Procurement.
 
-Chadim, M. (2023). Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
+### Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
+
+Abstract:
+
+This thesis analyses the relationship between engagement in public procurement and markups charged by firms. While controlling for aggregate trends
+and individual firm characteristics, the effect is estimated in a multivariate
+regression framework as the percentage markup premium associated with engagement in public procurement. This approach contributes to the existing literature on public procurement, in that, rather than only making comparisons
+between different tenders, it benchmarks the competitiveness of public procurement against the competitiveness in markets serving private clients while not
+having to rely on data on expert cost estimates.
 
 
+# [The Young Economist Award of the Czech Economic Society](https://cse.cz/en/page/31st-young-economist-of-the-year-award) Submission.
 
-Text stored in repository document MarkupsAndPublicProcurement.pdf
+Abstract:
 
-- I utilize financial statement data from firms within the Czech construction industry. By integrating these data with information from a public procurement database, I have developed a firm-year indicator identifying whether a firm participated in public procurement and the proportion of its sales derived from such contracts. My thesis, initially inspired by an undergraduate course in Industrial Organization, primarily addresses the econometric challenges associated with estimating production functions and firm-level markups. In my analysis, public procurement status serves a role analogous to export status in the work of De Loecker and Warzynski (2012).
+I document the evolution of market power using firm-level data from the Czech construction
+sector since 2006. Contrary to the global trend of rising markups, I find that aggregate markups
+have decreased, declining from 40% above marginal cost in 2006 to 30% in 2021, driven pri-
+marily by firms in the upper tail of the markup distribution. By linking this data with govern-
+ment tenders, I examine the relationship between markups and public procurement. I find that
+markups are significantly higher when controlling for unobserved productivity; government
+contractors have price-to-marginal-cost ratios that are 0.3 higher than those of private-sector
+firms; and firm-level markups increase by 12% upon a firm’s entry into public procurement.
 
-- Over the summer, I enhanced the estimation procedure by replacing the initially used user-written Stata command markupest (Rovigatti, 2020) with the original Stata GMM routine provided by De Loecker and Warzynski. Despite numerous methodological critiques—such as those by Gandhi et al. (2020) on the identification of gross output production functions and by Bond et al. (2021) on the estimation of production function elasticities—I have decided to retain this approach.
 <p float="left">
   <img src="/Fig1.png" width="98%"/> 
 
@@ -21,18 +36,15 @@ Text stored in repository document MarkupsAndPublicProcurement.pdf
 </p>
     
 
-- In my thesis, after resolving these challenges, I compare markups using both a pooled OLS regression and a two-way fixed effects model.
+  ## Master Thesis:
+   I have adopted a methodology that conditions on lagged outcome values, drawing from recent replication materials from Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. By employing matched data, I have achieved balance in these variables and successfully passed placebo tests, confirming no effect on markups in the years preceding firms' acquisition of government contracts. I intend to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with particular emphasis on the Difference-in-Differences (DID) methodology. This section will encompass (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics/negative controls and design-robust reweighting, inspired by recent work by Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
 
-- In revision for the [The Young Economist Award of the Czech Economic Society](https://cse.cz/en/page/31st-young-economist-of-the-year-award), my focus is on credible treatment effect estimation. I have adopted a methodology that conditions on lagged outcome values, informed by recent replication materials from Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. By employing matched data, I have achieved balance in these variables and successfully passed placebo tests, confirming no effect on markups in the years preceding firms' acquisition of government contracts.
-
-  <p float="left">
+<p float="left">
   <img src="/Rplot01.png"/>
   <img src="/Rplot03.png"/> 
   <img src="/Rplot02.png"/>
 </p>
 
-
-- This semester, I will complete my MSc thesis, in which I intend to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with particular emphasis on the Difference-in-Differences (DID) methodology. This section will encompass (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics/negative controls and design-robust reweighting, inspired by recent work by Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
 
 Methodology and replication package reference: 
 
