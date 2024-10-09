@@ -12,7 +12,7 @@ between different tenders, it benchmarks the competitiveness of public procureme
 having to rely on data on expert cost estimates.
 
 
-# [The Young Economist Award of the Czech Economic Society](https://cse.cz/en/page/31st-young-economist-of-the-year-award) Submission.
+###  Submission: [The Young Economist Award of the Czech Economic Society](https://cse.cz/en/page/31st-young-economist-of-the-year-award)
 
 Abstract:
 
@@ -36,9 +36,9 @@ firms; and firm-level markups increase by 12% upon a firm’s entry into public 
 </p>
     
 
-  ## Master Thesis:
-   I have adopted a methodology that conditions on lagged outcome values, drawing from recent replication materials from Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. By employing matched data, I have achieved balance in these variables and successfully passed placebo tests, confirming no effect on markups in the years preceding firms' acquisition of government contracts. I intend to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with particular emphasis on the Difference-in-Differences (DID) methodology. This section will encompass (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics/negative controls and design-robust reweighting, inspired by recent work by Guido Imbens, Dmitry Arkhangelsky, and their coauthors.
+### Master Thesis (in progress)
 
+I adopt a methodology conditioning on lagged outcome values, drawing from recent replication materials by Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. Using matched data, I achieve balance in these variables and pass placebo tests, confirming no effect on markups in the years prior to firms' acquisition of government contracts. I aim to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with a focus on the Difference-in-Differences (DID) methodology. This section will cover (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics, negative controls, and design-robust reweighting, inspired by recent work from Guido Imbens, Dmitry Arkhangelsky, and their coauthors
 <p float="left">
   <img src="/Rplot01.png"/>
   <img src="/Rplot03.png"/> 
