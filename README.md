@@ -26,7 +26,7 @@ contractors have price-to-marginal-cost ratios that are 0.3 higher than those of
 firms; and firm-level markups increase by 12% upon a firm’s entry into public procurement.
 
 <p float="left">
-  <img src="/Fig1.png" width="98%"/> 
+  <img src="/Fig1.png"/> 
 
   <img src="/Fig2a.png" width="49%"/> 
   <img src="/Fig2b.png" width="49%"/> 
@@ -40,6 +40,7 @@ firms; and firm-level markups increase by 12% upon a firm’s entry into public 
 
 I adopt a methodology conditioning on lagged outcome values, drawing from recent replication materials by Yiqing Xu and Guido Imbens. In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. Using matched data, I achieve balance in these variables and pass placebo tests, confirming no effect on markups in the years prior to firms' acquisition of government contracts. I aim to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis, with a focus on the Difference-in-Differences (DID) methodology. This section will cover (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies such as synthetic DID, matrix completion, and potentially sufficient statistics, negative controls, and design-robust reweighting, inspired by recent work from Guido Imbens, Dmitry Arkhangelsky, and their coauthors
 <p float="left">
+  <img src="/panel.png"/>
   <img src="/Rplot01.png"/>
   <img src="/Rplot03.png"/> 
   <img src="/Rplot02.png"/>
