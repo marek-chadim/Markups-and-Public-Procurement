@@ -18,9 +18,7 @@ Abstract:
 
 I document the evolution of market power using firm-level data from the Czech construction
 sector since 2006. Contrary to the global trend of rising markups, I find that aggregate markups
-have decreased, declining from 40% above marginal cost in 2006 to 30% in 2021, driven pri-
-marily by firms in the upper tail of the markup distribution. By linking this data with govern-
-ment tenders, I examine the relationship between markups and public procurement. I find that
+have decreased, declining from 40% above marginal cost in 2006 to 30% in 2021, driven primarily by firms in the upper tail of the markup distribution. By linking this data with government tenders, I examine the relationship between markups and public procurement. I find that
 markups are significantly higher when controlling for unobserved productivity; government
 contractors have price-to-marginal-cost ratios that are 0.3 higher than those of private-sector
 firms; and firm-level markups increase by 12% upon a firm’s entry into public procurement.
