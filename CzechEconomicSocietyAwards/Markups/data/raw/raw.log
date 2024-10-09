@@ -1,0 +1,640 @@
+--------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\chadi\OneDrive\CodeAndData\estimation\data\raw\raw.log
+  log type:  text
+ opened on:   2 Aug 2024, 13:55:57
+
+. ************************************************************************
+. *                       RAW DATA PROCESSING                            *
+. ************************************************************************
+. clear all 
+
+. cd files
+C:\Users\chadi\OneDrive\CodeAndData\estimation\data\raw\files
+
+. ************************************************************************
+. * PREPARE DEFLATORS 
+. import delimited "deflators.csv", clear
+(encoding automatically selected: ISO-8859-1)
+(8 vars, 2,465 obs)
+
+. save "deflators",replace
+file deflators.dta saved
+
+. ************************************************************************
+. * PREPARE TENDERS
+. insheet using "master_tender_analytics_202207251530.csv", names clear
+(10 vars, 934,722 obs)
+
+. rename bidder_id id
+
+. drop if length(id)==2 // foreign bidders
+(4,778 observations deleted)
+
+. destring id, replace
+id: all characters numeric; replaced as long
+
+. rename bid_final_price pp_sales
+
+. collapse (sum) pp_sales, by(id year)
+
+. save "tenders", replace
+file tenders.dta saved
+
+. ************************************************************************
+. * PREPARE ANALYSIS 
+. import delimited using "ratios1.csv", clear
+(encoding automatically selected: ISO-8859-1)
+(6 vars, 10,000 obs)
+
+. save "ratios", replace
+file ratios.dta saved
+
+. forvalues i=2/3{
+  2.     import delimited using "ratios`i'.csv", clear
+  3.         append using "ratios"
+  4.         save "ratios.dta", replace
+  5. }
+(encoding automatically selected: ISO-8859-1)
+(6 vars, 10,000 obs)
+file ratios.dta saved
+(encoding automatically selected: ISO-8859-1)
+(6 vars, 10,000 obs)
+file ratios.dta saved
+
+. ************************************************************************
+. import delimited using "financial1.csv", clear
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 10,000 obs)
+
+. save "financial", replace
+file financial.dta saved
+
+. forvalues i=2/6{
+  2.     import delimited using "financial`i'.csv", clear
+  3.         append using "financial"
+  4.         save "financial.dta", replace
+  5. }
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 10,000 obs)
+file financial.dta saved
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 10,000 obs)
+file financial.dta saved
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 10,000 obs)
+file financial.dta saved
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 10,000 obs)
+file financial.dta saved
+(encoding automatically selected: ISO-8859-1)
+(5 vars, 7,724 obs)
+file financial.dta saved
+
+. merge m:m id year using "ratios.dta", nogenerate
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                        27,077
+        from master                    23,474  
+        from using                      3,603  
+
+    Matched                            34,250  
+    -----------------------------------------
+
+. rename ccosts costs
+
+. rename fafixedassets assets
+
+. rename salsalesoutputs sales
+
+. rename wvawagesvalueadded wva
+
+. rename wswagessales ws
+
+. rename lplabourproductivity lp
+
+. rename cmiiicontributionmargin cm 
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(8,209 observations deleted)
+
+. duplicates drop id year, force
+
+Duplicates in terms of id year
+
+(376 observations deleted)
+
+. save "analysis", replace
+file analysis.dta saved
+
+. ************************************************************************
+. import delimited using "selections1.csv", clear
+(encoding automatically selected: ISO-8859-1)
+(30 vars, 1,000 obs)
+
+. save "selections", replace
+file selections.dta saved
+
+. forvalues i=2/5{
+  2.     import delimited using "selections`i'.csv", clear
+  3.         append using "selections"
+  4.         save "selections.dta", replace
+  5. }
+(encoding automatically selected: ISO-8859-1)
+(30 vars, 1,000 obs)
+file selections.dta saved
+(encoding automatically selected: ISO-8859-1)
+(30 vars, 1,000 obs)
+file selections.dta saved
+(encoding automatically selected: ISO-8859-1)
+(30 vars, 1,000 obs)
+(variable v22 was str19, now str23 to accommodate using data's values)
+(variable v23 was str19, now str23 to accommodate using data's values)
+(variable v24 was str19, now str23 to accommodate using data's values)
+(variable v25 was str19, now str23 to accommodate using data's values)
+(variable v26 was str19, now str23 to accommodate using data's values)
+(variable v27 was str19, now str23 to accommodate using data's values)
+file selections.dta saved
+(encoding automatically selected: ISO-8859-1)
+(30 vars, 773 obs)
+(variable numberofemployeesclassificationc was str17, now str19 to accommodate using data's
+       values)
+(variable v7 was str17, now str19 to accommodate using data's values)
+(variable v8 was str17, now str19 to accommodate using data's values)
+(variable v9 was str17, now str19 to accommodate using data's values)
+(variable v10 was str17, now str19 to accommodate using data's values)
+(variable v11 was str17, now str19 to accommodate using data's values)
+(variable v12 was str17, now str19 to accommodate using data's values)
+(variable v13 was str17, now str19 to accommodate using data's values)
+(variable v14 was str17, now str19 to accommodate using data's values)
+file selections.dta saved
+
+. rename idièo id
+
+. rename typeofsubject subject_type
+
+. rename legalform legal_form
+
+. rename institutionalsectorsesa2010 inst_sector
+
+. rename numberofemployees empl_num
+
+. rename numberofemployeesclassificationc empl_cat
+
+. drop empl_cat-v28
+
+. rename v29 empl_cat
+
+. rename mainnacecode nace
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(2 observations deleted)
+
+. save "selections", replace
+file selections.dta saved
+
+. ************************************************************************
+. * MERGE & CLEAN
+. use "analysis", clear
+
+. merge m:1 id using "selections", nogenerate
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                           315
+        from master                         0  
+        from using                        315  
+
+    Matched                            52,742  
+    -----------------------------------------
+
+. duplicates drop 
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+. duplicates drop id year, force
+
+Duplicates in terms of id year
+
+(0 observations are duplicates)
+
+. ************************************************************************
+. *correct sales
+. sum sales,d
+
+                    Sal - Sales, Outputs
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0      -3.78e+07
+ 5%      1921000       -1485000
+10%      7170000        -609000       Obs              45,127
+25%     1.80e+07        -333000       Sum of wgt.      45,127
+
+50%     4.14e+07                      Mean           1.52e+08
+                        Largest       Std. dev.      7.76e+08
+75%     1.01e+08       2.76e+10
+90%     2.48e+08       2.92e+10       Variance       6.02e+17
+95%     4.41e+08       2.96e+10       Skewness       20.71178
+99%     1.79e+09       3.16e+10       Kurtosis       569.9172
+
+. sum sales if sales<0,d
+
+                    Sal - Sales, Outputs
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -3.78e+07      -3.78e+07
+ 5%    -3.78e+07       -1485000
+10%    -3.78e+07        -609000       Obs                   5
+25%     -1485000        -333000       Sum of wgt.           5
+
+50%      -609000                      Mean           -8065000
+                        Largest       Std. dev.      1.67e+07
+75%      -333000       -1485000
+90%       -60000        -609000       Variance       2.77e+14
+95%       -60000        -333000       Skewness      -1.496159
+99%       -60000         -60000       Kurtosis       3.244793
+
+. replace sales = . if sales<0   // if negative
+(5 real changes made, 5 to missing)
+
+. sum sales if sales>10000000000,d
+
+                    Sal - Sales, Outputs
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     1.01e+10       1.01e+10
+ 5%     1.03e+10       1.02e+10
+10%     1.06e+10       1.03e+10       Obs                  60
+25%     1.22e+10       1.04e+10       Sum of wgt.          60
+
+50%     1.51e+10                      Mean           1.69e+10
+                        Largest       Std. dev.      5.94e+09
+75%     2.17e+10       2.76e+10
+90%     2.66e+10       2.92e+10       Variance       3.52e+19
+95%     2.84e+10       2.96e+10       Skewness       .7815384
+99%     3.16e+10       3.16e+10       Kurtosis       2.469146
+
+. *correct ws and define as a share
+. sum ws,d
+
+                     WS - Wages / Sales
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .55        -223.94
+ 5%         3.97         -80.47
+10%         5.94         -44.97       Obs              20,297
+25%        10.08          -7.75       Sum of wgt.      20,297
+
+50%        16.71                      Mean           31.73493
+                        Largest       Std. dev.      1478.243
+75%        24.95        3218.62
+90%        35.46          12220       Variance        2185202
+95%        43.44          20600       Skewness       139.7747
+99%        70.08       209212.5       Kurtosis        19758.8
+
+. sum ws if ws<1,d
+
+                     WS - Wages / Sales
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%       -44.97        -223.94
+ 5%            0         -80.47
+10%            0         -44.97       Obs                 247
+25%            0          -7.75       Sum of wgt.         247
+
+50%            0                      Mean          -1.267287
+                        Largest       Std. dev.      15.39974
+75%          .31            .94
+90%           .7            .95       Variance       237.1521
+95%          .83            .97       Skewness      -12.96081
+99%          .95            .98       Kurtosis       181.5396
+
+. replace ws = ws * 100 if ws<1 & ws>0 // if 100 times too low
+(84 real changes made)
+
+. replace ws = . if ws<0 // if negative
+(5 real changes made, 5 to missing)
+
+. replace ws = . if ws>100 // if very high
+(47 real changes made, 47 to missing)
+
+. replace ws = ws/100 // define as a share
+(20,087 real changes made)
+
+. *correct wva and define as a share
+. sum wva if wva<1,d
+
+                  WVA - Wages / Value added
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     -3438.46         -27800
+ 5%      -894.32      -19745.83
+10%      -455.14      -11529.76       Obs               1,689
+25%      -137.93       -9784.21       Sum of wgt.       1,689
+
+50%       -30.04                      Mean          -235.3029
+                        Largest       Std. dev.      1079.443
+75%            0            .47
+90%            0            .61       Variance        1165197
+95%            0            .82       Skewness      -15.73481
+99%            0            .94       Kurtosis       333.6609
+
+. replace wva = wva * 100 if wva<1 & wva>0 // if 100 times too low
+(14 real changes made)
+
+. replace wva = . if wva<0 // if negative
+(1,166 real changes made, 1,166 to missing)
+
+. replace wva = . if wva>500 // if very high
+(225 real changes made, 225 to missing)
+
+. replace wva = wva/100 // define as a share
+(24,525 real changes made)
+
+. *correct contribution margin and define as a share
+. sum cm if cm<1,d
+
+                CM III - Contribution margin
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%    -21618.18        -628620
+ 5%        -4976      -210962.5
+10%     -1351.32         -68740       Obs                 704
+25%     -270.755         -30330       Sum of wgt.         704
+
+50%      -50.415                      Mean          -2142.474
+                        Largest       Std. dev.      25261.04
+75%       -8.665            .95
+90%        -2.07            .97       Variance       6.38e+08
+95%         -.45            .98       Skewness      -22.55213
+99%          .87            .99       Kurtosis       545.5927
+
+. replace cm = cm * 100 if cm<1 & cm>0 // if 100 times too low
+(29 real changes made)
+
+. replace cm = . if cm<0 // if negative
+(674 real changes made, 674 to missing)
+
+. replace cm = cm/100 // define as a share
+(17,020 real changes made)
+
+. *gen cs (a ratio of costs to sales)
+. gen cs = costs / sales
+(8,850 missing values generated)
+
+. label var cs "costs / sales
+
+. sum cs,d
+
+                        costs / sales
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .6835413         -534.5
+ 5%     .8396033              0
+10%     .8909616              0       Obs              44,207
+25%     .9502636              0       Sum of wgt.      44,207
+
+50%     .9900335                      Mean           1.689415
+                        Largest       Std. dev.       109.926
+75%     1.018754            705
+90%     1.096202       1808.406       Variance       12083.72
+95%     1.199697         2181.5       Skewness       205.0072
+99%     1.880457       22909.38       Kurtosis       42668.27
+
+. replace cs = . if cs<0 // if negative
+(1 real change made, 1 to missing)
+
+. replace cs = . if cs>10 // if very high
+(63 real changes made, 63 to missing)
+
+. sum cs,d
+
+                        costs / sales
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .6835413              0
+ 5%     .8395725              0
+10%     .8907568              0       Obs              44,143
+25%     .9501753              0       Sum of wgt.      44,143
+
+50%     .9899685                      Mean           1.011049
+                        Largest       Std. dev.      .2940165
+75%     1.018527       9.285714
+90%      1.09459       9.440821       Variance       .0864457
+95%     1.193869       9.551857       Skewness       14.18976
+99%     1.783428       9.857142       Kurtosis       295.8321
+
+. *generate intermediate inputs
+. //gen iis = cm-ws
+. gen iis = cs - ws
+(35,163 missing values generated)
+
+. replace iis = . if iis<0
+(12 real changes made, 12 to missing)
+
+. *generate COGS/sales
+. gen COGSS = 1-cm
+(36,036 missing values generated)
+
+. label var cs "COGS / sales
+
+. replace COGSS = . if COGSS<0 // if negative
+(6 real changes made, 6 to missing)
+
+. replace COGSS = . if COGSS>10 // if very high
+(0 real changes made)
+
+. sum COGSS, d
+
+                            COGSS
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%         .047              0
+ 5%        .1647              0
+10%         .233              0       Obs              17,015
+25%        .3551              0       Sum of wgt.      17,015
+
+50%        .4968                      Mean           .5036579
+                        Largest       Std. dev.      .2082787
+75%        .6561          .9896
+90%         .787          .9897       Variance         .04338
+95%        .8548            .99       Skewness       .0274974
+99%         .946              1       Kurtosis        2.44985
+
+. *correct lp if 1000 times too large
+. sum lp if lp<10^8,d
+
+                  LP - Labour productivity
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%       -29000      -1.51e+08
+ 5%            0      -1.24e+08
+10%            0      -7.08e+07       Obs              14,127
+25%     317107.1      -6.31e+07       Sum of wgt.      14,127
+
+50%     551783.8                      Mean           1.01e+07
+                        Largest       Std. dev.      2.08e+07
+75%      6162000       9.99e+07
+90%     3.99e+07       9.99e+07       Variance       4.32e+14
+95%     6.07e+07       1.00e+08       Skewness       2.281886
+99%     9.00e+07       1.00e+08       Kurtosis       8.336064
+
+. sum lp if lp>10^8,d
+
+                  LP - Labour productivity
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     1.01e+08       1.00e+08
+ 5%     1.06e+08       1.00e+08
+10%     1.13e+08       1.00e+08       Obs               1,474
+25%     1.39e+08       1.00e+08       Sum of wgt.       1,474
+
+50%     2.13e+08                      Mean           5.25e+08
+                        Largest       Std. dev.      1.20e+09
+75%     4.07e+08       1.17e+10
+90%     8.20e+08       1.21e+10       Variance       1.44e+18
+95%     1.73e+09       1.35e+10       Skewness       6.339835
+99%     6.09e+09       1.42e+10       Kurtosis       52.15764
+
+. replace lp = lp/1000 if lp>10^8
+(1,474 real changes made)
+
+. *generate variables
+. gen nace2 = floor(nace/10000)
+(1 missing value generated)
+
+. gen GO = sales
+(7,935 missing values generated)
+
+. gen W = ws * sales
+(35,142 missing values generated)
+
+. gen II = iis * sales
+(35,175 missing values generated)
+
+. gen COGS= COGSS*sales
+(38,207 missing values generated)
+
+. gen VA = GO - II 
+(35,175 missing values generated)
+
+. gen L = VA / lp if VA/lp>0
+(43,227 missing values generated)
+
+. gen K = assets
+(5,188 missing values generated)
+
+. sort id year
+
+. *correct
+. replace GO = . if GO<0
+(0 real changes made)
+
+. replace COGS = . if COGS<0
+(0 real changes made)
+
+. replace II = . if II<0
+(0 real changes made)
+
+. replace W = . if W<0
+(0 real changes made)
+
+. replace K = . if K<0
+(50 real changes made, 50 to missing)
+
+. *deflate
+. merge m:1 year nace2 using "deflators", nogenerate
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                         2,750
+        from master                       373  
+        from using                      2,377  
+
+    Matched                            52,684  
+    -----------------------------------------
+
+. duplicates drop id year, force
+
+Duplicates in terms of id year
+
+(2,348 observations deleted)
+
+. gen rGO = GO/deflatorprdp
+(8,018 missing values generated)
+
+. gen rVA = VA/deflatorvalp
+(35,226 missing values generated)
+
+. gen rII = II/deflatorintp
+(35,226 missing values generated)
+
+. gen rW = W/deflatorcpi
+(35,193 missing values generated)
+
+. gen rK = K/deflatorgfcp
+(5,323 missing values generated)
+
+. gen rCOGS = COGS/deflatorintp
+(38,255 missing values generated)
+
+. *gen log variables
+. gen go = ln(rGO)
+(8,922 missing values generated)
+
+. gen w = ln(rW)
+(35,323 missing values generated)
+
+. gen ii = ln(rII)
+(35,227 missing values generated)
+
+. gen va = ln(rVA)
+(36,146 missing values generated)
+
+. gen l = ln(L)
+(43,256 missing values generated)
+
+. gen k = ln(rK)
+(7,032 missing values generated)
+
+. gen cogs = ln(rCOGS)
+(38,287 missing values generated)
+
+. ************************************************************************
+. xtset id year
+
+Panel variable: id (unbalanced)
+ Time variable: year, 1993 to 2023, but with gaps
+         Delta: 1 unit
+
+. sort id year
+
+. gen lagExists = 1 if year == year[_n-1] + 1 & id == id[_n-1]
+(8,003 missing values generated)
+
+. keep if lagExists == 1
+(8,003 observations deleted)
+
+. bys id (year): g entry = (_n == 1)
+
+. bys id (year): g exit = (_n == _N & year < 2021)
+
+. ************************************************************************
+. save "magnus", replace
+file magnus.dta saved
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\chadi\OneDrive\CodeAndData\estimation\data\raw\raw.log
+  log type:  text
+ closed on:   2 Aug 2024, 13:56:14
+--------------------------------------------------------------------------------------------------
