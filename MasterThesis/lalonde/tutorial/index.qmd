@@ -1,0 +1,36 @@
+# Welcome! {.unnumbered}
+
+This is a Quarto Book (Rbookdown previously) tutorial condensing the analysis from Imbens & Xu (2024).
+
+::: callout-note
+**Replication:** For an exact replication, please refer to the source GitHub [repository](https://github.com/xuyiqing/lalonde/), which contains the data and code necessary to replicate Imbens & Xu (2024): “LaLonde (1986) After Nearly Four Decades: Lessons Learned.” [\[arXiv\]](https://arxiv.org/abs/2406.00827).
+:::
+
+We reflect on five key lessons from the methodological literature following LaLonde's 1986 study:
+
+-   The central role of unconfoundedness
+-   The importance of overlap in covariate distributions
+-   The focus of propensity scores in constructing modern estimators
+-   Credibility through validation exercises
+-   Investigation of alternative estimands
+
+Revisiting LaLonde's analysis, we present how modern methods could enhance causal inference using data compiled by Rajeev Dehejia and Sadek Wahba (Dehejia and Wahba 1999, 2002) and survey data of lottery players in Imbens, Rubin, and Sacerdote (2001). Hereafter, we denote the former dataset as the LaLonde-Dehejia-Wahba (LDW) data, and the latter as IRS data. Our findings highlight that causal inference with observational data demands rigorous ( i ) examination of the assignment process, ( ii ) assessment of overlap, and ( iii ) execution of validation checks. This tutorial streamlines the methodology used in Imbens & Xu (2024), making it easier for readers to replicate the study and apply its techniques in their own research. In addition, we supplement a complementary application of our analytics with the original LaLonde (1986) data after the LDW analysis to further demonstrate and validate our methodologies.
+
+**Reference**: Imbens, Guido and Yiqing Xu (2024). “LaLonde (1986) after Nearly Four Decades: Lessons Learned.” [arXiv:2406.00827](https://arxiv.org/abs/2406.00827).
+
+**Acknowledgement**: We thank Zihan Xie and Jinwen Wu for their excellent research assistance, which makes this tutorial possible.
+
+## Data Files
+
+Imbens and Xu (2024) uses the following datasets, which are based on
+LaLonde (1986), Dehejia and Wahba (1999), Calónico and Smith (2017), and
+Imbens, Rubin, and Sacerdote (2001).
+
+| Data.files        | Details                                                          | File_Type | Experimental |
+|:------------------|:-----------------------------------------------------------------|:----------|:-------------|
+| nsw.dta           | NSW experimental data, used in LaLonde (1986)                    | Stata     | Yes          |
+| nsw_dw.dta        | Subset of NSW experimental data, used in Dehejia & Wahba (1999)  | Stata     | Yes          |
+| cps_controls.dta  | CPS-SSA-1 controls, used in both papers                          | Stata     | No           |
+| psid_controls.dta | PSID-1 controls, used in both papers                             | Stata     | No           |
+| lottery.RData     | Data of lottery winners, used in Imbens, Rubin & Sacerdote (201) | R         | No           |
+| NSW_AFDC_CS.dta   | Reconstructed NSW AFDC female samples                            | Stata     | Both         |
