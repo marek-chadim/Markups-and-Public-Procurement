@@ -17,7 +17,7 @@ source("https://github.com/xuyiqing/lalonde/blob/main/tutorial/functions.R?raw=T
 d\$co1 \<- ifelse(d\$pp_dummy == 0 & d\$fpp == 0, 1, 0)
 
 ```{r}
-setwd("lalonde/tutorial")
+#setwd("lalonde/tutorial")
 d<-read.csv("data/data.csv")
 d<-as.data.frame(d)
 d[is.na(d)] <- 0
@@ -154,7 +154,7 @@ par(mfrow = c(1,1))
 plot(1, xlim = c(3.7, 9.3), ylim = c(-.1, .225), type = "n", axes = FALSE, 
     ylab = "Effects on Markups (percentage)", xlab = "Year Relative to Contract")
 box(); axis(2)
-axis(1, at = 4:9, labels = c(-3:3))
+axis(1, at = 4:9, labels = c(-3:2))
 abline(h = 0, v= 6.5, col = "gray60", lty = 2, lwd = 2)
 for (i in 4:9) {
     # full dataset with DIM
@@ -202,7 +202,7 @@ par(mar = c(4, 4, 1, 2))
 plot(1, xlim = c(3.7, 9.7), ylim = c(-1.5, 1.5), type = "n", axes = FALSE, 
     ylab = "Effects on Markups (percentage)", xlab = "Year Relative to Contract")
 box(); axis(2)
-axis(1, at = 4:9, labels = c(-3:3))
+axis(1, at = 4:9, labels = c(-3:2))
 abline(h = 0, v= 6.5, col = "gray60", lty = 2, lwd = 1.5)
 for (i in 4:length(outcomes)) {
     dens <- density(tau[,i], bw = 0.5)
