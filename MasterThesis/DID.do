@@ -1,20 +1,26 @@
 clear all
 use did
-help lpdid
 
 
 bys id: egen meanpp = mean(pp_dummy)
+tab meanpp
 bys id: gen treated = cond(meanpp>0, 1, 0)
-gen i = id 
+tab treated
+gen i = id
 gen t = year-2005
 gen markup = muhat_tl
 gen Y = ln(muhat_tl)
 egen Ei = min(t / (pp_dummy == 1)), by(id)
+sum Ei
 drop K
 gen K = t-Ei // "relative time", i.e. the number periods since treated (could be missing if never-treated)
 gen D = K>=0 & Ei!=. 	
+tab pp_dummy D 
 
-sum Ei
+drop W
+twowayfeweights Y i t D, type(feTR)
+dis beta
+
 gen lastcohort = Ei==r(max) // dummy for the latest- or never-treated cohort
 gen gvar = cond(Ei==., 0, Ei) // dummy for the treated cohort
 xtevent Y, policy(D) window(5) impute(stag) trend(-5) plot
@@ -22,11 +28,12 @@ xtevent Y, policy(D) window(5) impute(stag) trend(-5) plot
 reghdfe Y pp_dummy,  a(i t#nace2)
 reghdfe Y D,  a(i t#nace2)
 
-lpdid Y, time(t) unit(i) treat(pp_dummy) nocomp pre(3) post(3) nonabs(3, notyet)  absorb(nace2) 
+lpdid Y, time(t) unit(i) treat(pp_dummy) nocomp pre(4) post(4) nonabs(1, notyet)  absorb(nace2) 
 
 
 panelview Y pp_dummy , i(i) t(t) type(treat) bytiming collapsehistory
-did_multiplegt_dyn Y i t pp_dummy, placebo(5) effects(15) cluster(i) trends_nonparam(nace2) normalized  normalized_weights
+did_multiplegt_dyn Y i t pp_dummy, placebo(3) effects(4) cluster(i) trends_nonparam(nace2) normalized  normalized_weights same_switchers 
+
 
 panelview Y D , i(i) t(t) type(treat) bytiming collapsehistory
 bys id: gen D1=D[1]
