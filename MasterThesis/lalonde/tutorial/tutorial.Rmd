@@ -66,9 +66,9 @@ The figures indicate that while the propensity score distributions of individual
 
 ```{r}
 par(mfrow = c(1,2))
-s_ps <-assess_overlap(data = d, treat = treat, cov = covar, breaks = 30, xlim = c(0, 1), ylim = c(-0.2, 0.2))
+s_ps <-assess_overlap(data = d, treat = treat, cov = covar, odds=FALSE, breaks = 30, xlim = c(0, 1), ylim = c(-0.2, 0.2))
 
-s_ps2 <-assess_overlap(data = s_ps_match, treat = treat, cov = covar, breaks = 30, xlim = c(0, 1), ylim = c(-0.2, 0.2))
+s_ps2 <-assess_overlap(data = s_ps_match, treat = treat, cov = covar,odds=FALSE,  breaks = 30, xlim = c(0, 1), ylim = c(-0.2, 0.2))
 ```
 
 ## Trimming to Improve Overlap
