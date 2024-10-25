@@ -1,0 +1,339 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Abadie et~al.]{Abadie, Athey, Imbens \harvardand\ Wooldridge}{2023}{abadie2022should}
+Abadie, Alberto, Susan Athey, Guido~W Imbens \harvardand\ Jeffrey~M Wooldridge. 2023.
+\newblock ``When should you adjust standard errors for clustering?'' {\em Quarterly Journal of Economics} 138(1):1--35.
+
+\harvarditem{Arkhangelsky \harvardand\ Imbens}{2023}{Arkhangelsky2023-zy}
+Arkhangelsky, Dmitry \harvardand\ Guido Imbens. 2023.
+\newblock ``Causal Models for Longitudinal and Panel Data: A Survey.''.
+
+\harvarditem{Arkhangelsky \harvardand\ Imbens}{2022}{Arkhangelsky2019-zl}
+Arkhangelsky, Dmitry \harvardand\ Guido~W Imbens. 2022.
+\newblock ``Doubly robust identification for causal panel data models.'' {\em The Econometrics Journal} 25(3):649--674.
+
+\harvarditem[Arkhangelsky et~al.]{Arkhangelsky, Imbens, Lei \harvardand\ Luo}{2021}{Arkhangelsky2021-ti}
+Arkhangelsky, Dmitry, Guido~W Imbens, Lihua Lei \harvardand\ Xiaoman Luo. 2021.
+\newblock ``{Double-Robust} {Two-Way-Fixed-Effects} Regression For Panel Data.''.
+
+\harvarditem[Aronow, Samii \harvardand\ Wang]{Aronow, Samii \harvardand\ Wang}{2020}{Aronow2020-jc}
+Aronow, Peter~M, Cyrus Samii \harvardand\ Ye Wang. 2020.
+\newblock ``{Design-Based} Inference for Spatial Experiments with Interference.''.
+
+\harvarditem{Athey \harvardand\ Imbens}{2022}{Athey2018-re}
+Athey, Susan \harvardand\ Guido~W Imbens. 2022.
+\newblock ``Design-based analysis in difference-in-differences settings with staggered adoption.'' {\em Journal of Econometrics} 226(1):62--79.
+
+\harvarditem{Bai \harvardand\ Ng}{2021{\em a}}{bai2021matrix}
+Bai, Jushan \harvardand\ Serena Ng. 2021{\em a}.
+\newblock ``Matrix completion, counterfactuals, and factor analysis of missing data.'' {\em Journal of the American Statistical Association} 116(536):1746--1763.
+
+\harvarditem{Bai \harvardand\ Ng}{2021{\em b}}{Bai2020-tr}
+Bai, Jushan \harvardand\ Serena Ng. 2021{\em b}.
+\newblock ``Matrix completion, counterfactuals, and factor analysis of missing data.'' {\em Journal of the American Statistical Association} 116(536):1746--1763.
+
+\harvarditem[Baker, Larcker \harvardand\ Wang]{Baker, Larcker \harvardand\ Wang}{2022}{BLW2022}
+Baker, Andrew~C, David~F Larcker \harvardand\ Charles~CY Wang. 2022.
+\newblock ``How much should we trust staggered difference-in-differences estimates?'' {\em Journal of Financial Economics} 144(2):370--395.
+
+\harvarditem{Beazer \harvardand\ Reuter}{2022}{Beazer2022}
+Beazer, Quintin~H. \harvardand\ Ora~John Reuter. 2022.
+\newblock ``Do Authoritarian Elections Help the Poor? Evidence from Russian Cities.'' {\em Journal of Politics} 84:437--454.
+
+\harvarditem{Beck \harvardand\ Katz}{1995}{Beck1995-am}
+Beck, Nathaniel \harvardand\ Jonathan~N Katz. 1995.
+\newblock ``What to Do (and Not to Do) with {Time-Series} {Cross-Section} Data.'' {\em American Political Science Review} 89(3):634--647.
+
+\harvarditem{Beck \harvardand\ Katz}{2001}{Beck2001-as}
+Beck, Nathaniel \harvardand\ Jonathan~N Katz. 2001.
+\newblock ``Throwing Out the Baby with the Bath Water: A Comment on Green, Kim, and Yoon.'' {\em International Organization} 55(2):487--495.
+
+\harvarditem[Berge, Krantz \harvardand\ McDermott]{Berge, Krantz \harvardand\ McDermott}{2023}{fixest}
+Berge, Laurent, Sebastian Krantz \harvardand\ Grant McDermott. 2023.
+\newblock {\em fixest: Fast Fixed-Effects Estimations}.
+\newblock R package version 0.11.1.
+\newline\harvardurl{https://lrberge.github.io/fixest/, https://github.com/lrberge/fixest}
+
+\harvarditem[Bertrand, Duflo \harvardand\ Mullainathan]{Bertrand, Duflo \harvardand\ Mullainathan}{2004}{Bertrand2004-rc}
+Bertrand, Marianne, Esther Duflo \harvardand\ Sendhil Mullainathan. 2004.
+\newblock ``How Much Should We Trust {Differences-in-Differences} Estimates?'' {\em Quarterly Journal of Economics} 119(1):249--275.
+
+\harvarditem{Bischof \harvardand\ Wagner}{2019}{Bischof2019}
+Bischof, Daniel \harvardand\ Markus Wagner. 2019.
+\newblock ``{Do Voters Polarize When Radical Parties Enter Parliament?}'' {\em American Journal of Political Science} 63(4):888--904.
+
+\harvarditem{Bisgaard \harvardand\ Slothuus}{2018}{Bisgaard2018}
+Bisgaard, Martin \harvardand\ Rune Slothuus. 2018.
+\newblock ``{Partisan Elites as Culprits? How Party Cues Shape Partisan Perceptual Gaps}.'' {\em American Journal of Political Science} 62(2):456--469.
+
+\harvarditem{Blackwell \harvardand\ Glynn}{2018}{Blackwell2018-br}
+Blackwell, Matthew \harvardand\ Adam Glynn. 2018.
+\newblock ``How to Make Causal Inferences with {Time-Series} {Cross-Sectional} Data Under Selection on Observables.'' {\em American Political Science Review} 112(2):1067--1082.
+
+\harvarditem[Blair, Christensen \harvardand\ Wirtschafter]{Blair, Christensen \harvardand\ Wirtschafter}{2022}{Blair2022}
+Blair, Graeme, Darin Christensen \harvardand\ Valerie Wirtschafter. 2022.
+\newblock ``How Does Armed Conflict Shape Investment? Evidence from the Mining Sector.'' {\em Journal of Politics} 84:116--133.
+
+\harvarditem{Bleiberg}{2021}{bleiberg2021stackedev}
+Bleiberg, Joshua. 2021.
+\newblock ``STACKEDEV: Stata module to implement stacked event study estimator.''.
+
+\harvarditem[Bokobza et~al.]{Bokobza, Krishnarajan, Nyrup, Sakstrup \harvardand\ Aaskoven}{2022}{Bokobza2022}
+Bokobza, Laure, Suthan Krishnarajan, Jacob Nyrup, Casper Sakstrup \harvardand\ Lasse Aaskoven. 2022.
+\newblock ``The Morning After: Cabinet Instability and the Purging of Ministers after Failed Coup Attempts in Autocracies.'' {\em Journal of Politics} 84:1437--1452.
+
+\harvarditem[Borusyak, Jaravel \harvardand\ Spiess]{Borusyak, Jaravel \harvardand\ Spiess}{2023}{BJS2021}
+Borusyak, Kirill, Xavier Jaravel \harvardand\ Jann Spiess. 2023.
+\newblock ``Revisiting Event Study Designs: Robust and Efficient Estimation.'' {\em Review of Economic Studies (forthcoming)} .
+
+\harvarditem{Callaway \harvardand\ Sant’Anna}{2021}{callaway2021-did}
+Callaway, Brantly \harvardand\ Pedro~HC Sant’Anna. 2021.
+\newblock ``Difference-in-differences with multiple time periods.'' {\em Journal of Econometrics} 225(2):200--230.
+
+\harvarditem{Callaway \harvardand\ Karami}{2023}{Callaway2021-am}
+Callaway, Brantly \harvardand\ Sonia Karami. 2023.
+\newblock ``Treatment effects in interactive fixed effects models with a small number of time periods.'' {\em Journal of Econometrics} 233(1):184--208.
+
+\harvarditem[Cameron, Gelbach \harvardand\ Miller]{Cameron, Gelbach \harvardand\ Miller}{2008}{Cameron2008-ou}
+Cameron, A~Colin, Jonah~B Gelbach \harvardand\ Douglas~L Miller. 2008.
+\newblock ``Bootstrap-based Improvements for Inference with Clustered Errors.'' {\em Review of Economics and Statistics} 90(3):414--427.
+
+\harvarditem[Caughey, Warshaw \harvardand\ Xu]{Caughey, Warshaw \harvardand\ Xu}{2017}{Caughey2017}
+Caughey, Devin, Christopher Warshaw \harvardand\ Yiqing Xu. 2017.
+\newblock ``{Incremental democracy: The policy effects of partisan control of state government}.'' {\em Journal of Politics} 79(4):1342--1358.
+
+\harvarditem[Cengiz et~al.]{Cengiz, Dube, Lindner \harvardand\ Zipperer}{2019}{cengiz2019effect}
+Cengiz, Doruk, Arindrajit Dube, Attila Lindner \harvardand\ Ben Zipperer. 2019.
+\newblock ``The effect of minimum wages on low-wage jobs.'' {\em Quarterly Journal of Economics} 134(3):1405--1454.
+
+\harvarditem{Christensen \harvardand\ Garfias}{2021}{Christensen2021}
+Christensen, Darin \harvardand\ Francisco Garfias. 2021.
+\newblock ``The politics of property taxation: Fiscal infrastructure and electoral incentives in Brazil.'' {\em Journal of Politics} 83(4):1399--1416.
+
+\harvarditem{Clarke}{2020}{Clarke2020}
+Clarke, Andrew~J. 2020.
+\newblock ``{Party Sub-Brands and American Party Factions}.'' {\em American Journal of Political Science} 64(3):452--470.
+
+\harvarditem{Clayton \harvardand\ Zetterberg}{2018}{Clayton2018}
+Clayton, Amanda \harvardand\ P{\"{a}}r Zetterberg. 2018.
+\newblock ``{Quota shocks: Electoral gender quotas and government spending priorities worldwide}.'' {\em Journal of Politics} 80(3):916--932.
+
+\harvarditem{Cox \harvardand\ Dincecco}{2021}{cox2021budgetary}
+Cox, Gary~W \harvardand\ Mark Dincecco. 2021.
+\newblock ``The budgetary origins of fiscal-military prowess.'' {\em Journal of Politics} 83(3):851--866.
+
+\harvarditem{de~Chaisemartin \harvardand\ D'Haultf{\oe}uille}{2017}{De_Chaisemartin2017-dk}
+de~Chaisemartin, Cl{\'e}ment \harvardand\ Xavier D'Haultf{\oe}uille. 2017.
+\newblock ``Fuzzy {Differences-in-Differences}.'' {\em Review of Economic Studies} 85(2):999--1028.
+
+\harvarditem{de~Chaisemartin \harvardand\ D'Haultf{\oe}uille}{2020}{CDH2020}
+de~Chaisemartin, Cl{\'e}ment \harvardand\ Xavier D'Haultf{\oe}uille. 2020.
+\newblock ``Two-way Fixed Effects Estimators with Heterogeneous Treatment Effects.'' {\em American Economic Review} 110(9):2964--2996.
+
+\harvarditem[Dewan, Meril{\"a}inen \harvardand\ Tukiainen]{Dewan, Meril{\"a}inen \harvardand\ Tukiainen}{2020}{dewan2020victorian}
+Dewan, Torun, Jaakko Meril{\"a}inen \harvardand\ Janne Tukiainen. 2020.
+\newblock ``Victorian voting: The origins of party orientation and class alignment.'' {\em American Journal of Political Science} 64(4):869--886.
+
+\harvarditem{Distelhorst \harvardand\ Locke}{2018}{Distelhorst2018}
+Distelhorst, Greg \harvardand\ Richard~M. Locke. 2018.
+\newblock ``{Does Compliance Pay? Social Standards and Firm-Level Trade}.'' {\em American Journal of Political Science} 62(3):695--711.
+
+\harvarditem{Eckhouse}{2022}{eckhouse2022metrics}
+Eckhouse, Laurel. 2022.
+\newblock ``Metrics Management and Bureaucratic Accountability: Evidence from Policing.'' {\em American Journal of Political Science} 66(2):385--401.
+
+\harvarditem[Eggers et~al.]{Eggers, Fowler, Hainmueller, Hall \harvardand\ Snyder~Jr}{2015}{eggers2015validity}
+Eggers, Andrew~C, Anthony Fowler, Jens Hainmueller, Andrew~B Hall \harvardand\ James~M Snyder~Jr. 2015.
+\newblock ``On the validity of the regression discontinuity design for estimating electoral effects: New evidence from over 40,000 close races.'' {\em American Journal of Political Science} 59(1):259--274.
+
+\harvarditem{Fouirnaies}{2018}{Fouirnaies2018ajps}
+Fouirnaies, Alexander. 2018.
+\newblock ``{When Are Agenda Setters Valuable?}'' {\em American Journal of Political Science} 62(1):176--191.
+
+\harvarditem{Fouirnaies \harvardand\ Hall}{2018}{fh2018}
+Fouirnaies, Alexander \harvardand\ Andrew~B. Hall. 2018.
+\newblock ``{How Do Interest Groups Seek Access to Committees?}'' {\em American Journal of Political Science} 62(1):132--147.
+
+\harvarditem{Fouirnaies \harvardand\ Hall}{2022}{Fouirnaies2022}
+Fouirnaies, Alexander \harvardand\ Andrew~B. Hall. 2022.
+\newblock ``How Do Electoral Incentives Affect Legislator Behavior? Evidence from U.S. State Legislatures.'' {\em American Political Science Review} 116:662--676.
+
+\harvarditem{Fresh}{2018}{Fresh2018}
+Fresh, Adriane. 2018.
+\newblock ``{The Effect of the Voting Rights Act on Enfranchisement: Evidence from North Carolina}.'' {\em Journal of Politics} 80(2):713--718.
+
+\harvarditem{Garfias}{2019}{Garfias2019jop}
+Garfias, Francisco. 2019.
+\newblock ``{Elite coalitions, limited government, and fiscal capacity development: Evidence from bourbon Mexico}.'' {\em Journal of Politics} 81(1):95--111.
+
+\harvarditem{Goodman-Bacon}{2021}{Goodman-Bacon2021-xb}
+Goodman-Bacon, Andrew. 2021.
+\newblock ``Difference-in-differences with variation in treatment timing.'' {\em Journal of Econometrics} 225(2):254--277.
+
+\harvarditem[Green, Kim \harvardand\ Yoon]{Green, Kim \harvardand\ Yoon}{2001}{Green2001-dy}
+Green, Donald~P, Soo~Yeon Kim \harvardand\ David~H Yoon. 2001.
+\newblock ``Dirty Pool.'' {\em International Organization} 55(2):441--468.
+
+\harvarditem{Grumbach \harvardand\ Sahn}{2020}{Grumbach2020}
+Grumbach, Jacob~M. \harvardand\ Alexander Sahn. 2020.
+\newblock ``{Race and Representation in Campaign Finance}.'' {\em American Political Science Review} 114(1):206--221.
+
+\harvarditem{Grumbach \harvardand\ Hill}{2022}{Grumbach2022}
+Grumbach, Jacob~M. \harvardand\ Charlotte Hill. 2022.
+\newblock ``Rock the Registration: Same Day Registration Increases Turnout of Young Voters.'' {\em Journal of Politics} 84:405--417.
+
+\harvarditem{Hainmueller \harvardand\ Hangartner}{2019}{hainmueller2019does}
+Hainmueller, Jens \harvardand\ Dominik Hangartner. 2019.
+\newblock ``Does direct democracy hurt immigrant minorities? Evidence from naturalization decisions in Switzerland.'' {\em American Journal of Political Science} 63(3):530--547.
+
+\harvarditem[Hainmueller, Mummolo \harvardand\ Xu]{Hainmueller, Mummolo \harvardand\ Xu}{2019}{hainmueller2019much}
+Hainmueller, Jens, Jonathan Mummolo \harvardand\ Yiqing Xu. 2019.
+\newblock ``How much should we trust estimates from multiplicative interaction models? Simple tools to improve empirical practice.'' {\em Political Analysis} 27(2):163--192.
+
+\harvarditem{Hall \harvardand\ Yoder}{2022}{Hall2022}
+Hall, Andrew~B. \harvardand\ Jesse Yoder. 2022.
+\newblock ``Does Homeownership Influence Political Behavior? Evidence from Administrative Data.'' {\em Journal of Politics} 84:351--366.
+
+\harvarditem[Hirano et~al.]{Hirano, Kaslovsky, Olson \harvardand\ Snyder}{2022}{Hirano2022}
+Hirano, Shigeo, Jaclyn Kaslovsky, Michael~P. Olson \harvardand\ James~M. Snyder. 2022.
+\newblock ``The Growth of Campaign Advertising in the United States, 1880–1930.'' {\em Journal of Politics} 84:1482--1496.
+
+\harvarditem{Imai \harvardand\ Kim}{2019}{Imai2019-nw}
+Imai, Kosuke \harvardand\ In~Song Kim. 2019.
+\newblock ``When Should We Use Unit Fixed Effects Regression Models for Causal Inference with Longitudinal Data?'' {\em American Journal of Political Science} 63(2):467--490.
+
+\harvarditem[Imai, Kim \harvardand\ Wang]{Imai, Kim \harvardand\ Wang}{2023}{IKW2021}
+Imai, Kosuke, In~Song Kim \harvardand\ Erik~H Wang. 2023.
+\newblock ``Matching methods for causal inference with time-series cross-sectional data.'' {\em American Journal of Political Science} 67(3):587--605.
+
+\harvarditem{Jiang}{2018}{Jiang2018}
+Jiang, Junyan. 2018.
+\newblock ``{Making Bureaucracy Work: Patronage Networks, Performance Incentives, and Economic Development in China}.'' {\em American Journal of Political Science} 62(4):982--999.
+
+\harvarditem{Kilborn \harvardand\ Vishwanath}{2022}{kilborn2022public}
+Kilborn, Mitchell \harvardand\ Arjun Vishwanath. 2022.
+\newblock ``Public money talks too: How public campaign financing degrades representation.'' {\em American Journal of Political Science} 66(3):730--744.
+
+\harvarditem{King}{2001}{King2001-br}
+King, Gary. 2001.
+\newblock ``Proper Nouns and Methodological Propriety: Pooling Dyads in International Relations Data.'' {\em International Organization} 55(2):497--507.
+
+\harvarditem[King, Keohane \harvardand\ Verba]{King, Keohane \harvardand\ Verba}{2021}{king2021designing}
+King, Gary, Robert~O Keohane \harvardand\ Sidney Verba. 2021.
+\newblock {\em Designing social inquiry: Scientific inference in qualitative research}.
+\newblock Princeton University Press.
+
+\harvarditem{Kogan}{2021}{Kogan2021}
+Kogan, Vladimir. 2021.
+\newblock ``{Do welfare benefits pay electoral dividends? Evidence from the national food stamp program rollout}.'' {\em Journal of Politics} 83(1):20--70.
+
+\harvarditem[Lal et~al.]{Lal, Lockhart, Xu \harvardand\ Zu}{2024}{lal2021much}
+Lal, Apoorva, Mac Lockhart, Yiqing Xu \harvardand\ Ziwen Zu. 2024.
+\newblock ``How much should we trust instrumental variable estimates in political science? Practical advice based on 67 replicated studies.'' {\em Political Analysis} (forthcoming).
+
+\harvarditem{Lall}{2016}{lall2016multiple}
+Lall, Ranjit. 2016.
+\newblock ``How multiple imputation makes a difference.'' {\em Political Analysis} 24(4):414--433.
+
+\harvarditem[Liu, Sha \harvardand\ Zhang]{Liu, Sha \harvardand\ Zhang}{2022}{LSZ2022}
+Liu, Chong, Xuekang Sha \harvardand\ Yan Zhang. 2022.
+\newblock ``Multi-Period Difference-in-Differences: Heterogeneous Treatment Effects and Choice of Research Methods (\textit{Duoqi Shuangchong Chafen Fa: Chuli Xiaoying Yizhixing Yu Yanjiu Fangfa Xuance}).'' {\em The Journal of Quantitative and Technical Economics (in Chinese)} (forthcoming).
+
+\harvarditem[Liu, Wang \harvardand\ Xu]{Liu, Wang \harvardand\ Xu}{2022}{LWX2022}
+Liu, Licheng, Ye Wang \harvardand\ Yiqing Xu. 2022.
+\newblock ``A Practical Guide to Counterfactual Estimators for Causal Inference with Time-Series Cross-Sectional Data.'' {\em American Jouranl of Political Science} (forthcoming).
+
+\harvarditem[Magaloni, Franco-Vivanco \harvardand\ Melo]{Magaloni, Franco-Vivanco \harvardand\ Melo}{2020}{magaloni2020killing}
+Magaloni, Beatriz, Edgar Franco-Vivanco \harvardand\ Vanessa Melo. 2020.
+\newblock ``Killing in the slums: Social order, criminal governance, and police violence in Rio de Janeiro.'' {\em American Political Science Review} 114(2):552--572.
+
+\harvarditem[Mou, Liu \harvardand\ Xu]{Mou, Liu \harvardand\ Xu}{2023}{mou2023panelview}
+Mou, Hongyu, Licheng Liu \harvardand\ Yiqing Xu. 2023.
+\newblock ``Panel Data Visualization in R (panelView) and Stata (panelview).'' {\em Journal of Statistical Software} .
+
+\harvarditem{Paglayan}{2022}{Paglayan2022}
+Paglayan, Agustina~S. 2022.
+\newblock ``Education or Indoctrination? The Violent Origins of Public School Systems in an Era of State-Building.'' {\em American Political Science Review} 116:1242--1257.
+
+\harvarditem{Payson}{2020{\em a}}{Payson2020jop}
+Payson, Julia~A. 2020{\em a}.
+\newblock ``{Cities in the statehouse: How local governments use lobbyists to secure state funding}.'' {\em Journal of Politics} 82(2):403--417.
+
+\harvarditem{Payson}{2020{\em b}}{Payson2020apsr}
+Payson, Julia~A. 2020{\em b}.
+\newblock ``{The Partisan Logic of City Mobilization: Evidence from State Lobbying Disclosures}.'' {\em American Political Science Review} 114(3):677--690.
+
+\harvarditem{Pierskalla \harvardand\ Sacks}{2018}{Pierskalla2018}
+Pierskalla, Jan~H. \harvardand\ Audrey Sacks. 2018.
+\newblock ``{Unpaved road ahead: The consequences of election cycles for capital expenditures}.'' {\em Journal of Politics} 80(2):510--524.
+
+\harvarditem{Pl{\"u}mper \harvardand\ Troeger}{2019}{plumper2019not}
+Pl{\"u}mper, Thomas \harvardand\ Vera~E Troeger. 2019.
+\newblock ``Not so harmless after all: The fixed-effects model.'' {\em Political Analysis} 27(1):21--45.
+
+\harvarditem{Rambachan \harvardand\ Roth}{2023}{rambachan2023more}
+Rambachan, Ashesh \harvardand\ Jonathan Roth. 2023.
+\newblock ``A More Credible Approach to Parallel Trends.'' {\em The Review of Economic Studies} 90(5):2555--2591.
+
+\harvarditem[Ravanilla, Sexton \harvardand\ Haim]{Ravanilla, Sexton \harvardand\ Haim}{2022}{Ravanilla2022}
+Ravanilla, Nico, Renard Sexton \harvardand\ Dotan Haim. 2022.
+\newblock ``Deadly Populism: How Local Political Outsiders Drive Duterte’s War on Drugs in the Philippines.'' {\em Journal of Politics} 84:1035--1056.
+
+\harvarditem{Roth}{2022}{roth2019pre}
+Roth, Jonathan. 2022.
+\newblock ``Pretest with caution: Event-study estimates after testing for parallel trends.'' {\em American Economic Review: Insights} 4(3):305--322.
+
+\harvarditem{Roth}{2024}{Roth2024interpret}
+Roth, Jonathan. 2024.
+\newblock ``Interpreting {Event-Studies} from Recent {Difference-in-Differences} Methods.''.
+
+\harvarditem[Roth et~al.]{Roth, Sant’Anna, Bilinski \harvardand\ Poe}{2023}{roth2023s}
+Roth, Jonathan, Pedro~HC Sant’Anna, Alyssa Bilinski \harvardand\ John Poe. 2023.
+\newblock ``What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.'' {\em Journal of Econometrics} .
+
+\harvarditem{Sant’Anna \harvardand\ Callaway}{2021}{sant2021did}
+Sant’Anna, P \harvardand\ B Callaway. 2021.
+\newblock ``DID: Treatment effects with multiple periods and groups in R.'' {\em URL: https://cran. r-project. org/web/packages/did/index. html} .
+
+\harvarditem[Schafer et~al.]{Schafer, Cantoni, Bellettini \harvardand\ Berti~Ceroni}{2022}{Schafer2021}
+Schafer, Jerome, Enrico Cantoni, Giorgio Bellettini \harvardand\ Carlotta Berti~Ceroni. 2022.
+\newblock ``Making unequal democracy work? The effects of income on voter turnout in Northern Italy.'' {\em American Journal of Political Science} 66(3):745--761.
+
+\harvarditem{Schubiger}{2021}{Schubiger2021}
+Schubiger, Livia~Isabella. 2021.
+\newblock ``{State violence and wartime civilian agency: Evidence from peru}.'' {\em Journal of Politics} 83(4):1383--1398.
+
+\harvarditem{Schuit \harvardand\ Rogowski}{2017}{Schuit2017}
+Schuit, Sophie \harvardand\ Jon~C. Rogowski. 2017.
+\newblock ``{Race, Representation, and the Voting Rights Act}.'' {\em American Journal of Political Science} 61(3):513--526.
+
+\harvarditem{Strezhnev}{2018}{Strezhnev2018-ku}
+Strezhnev, Anton. 2018.
+\newblock ``Semiparametric Weighting Estimators for {Multi-Period} {Difference-in-Differences} Designs.'' Mimeo, New York University.
+
+\harvarditem{Sun \harvardand\ Abraham}{2021}{sun2021-event}
+Sun, Liyang \harvardand\ Sarah Abraham. 2021.
+\newblock ``Estimating dynamic treatment effects in event studies with heterogeneous treatment effects.'' {\em Journal of Econometrics} 225(2):175--199.
+
+\harvarditem{Trounstine}{2020}{Trounstine2020}
+Trounstine, Jessica. 2020.
+\newblock ``{The Geography of Inequality: How Land Use Regulation Produces Segregation}.'' {\em American Political Science Review} 114(2):443--455.
+
+\harvarditem{Wang}{2021}{Wang2021-xo}
+Wang, Ye. 2021.
+\newblock ``Causal Inference under Temporal and Spatial Interference.'' Mimeo, New York University.
+
+\harvarditem{Weschle}{2021}{Weschle2021}
+Weschle, Simon. 2021.
+\newblock ``{Parliamentary positions and politicians' private sector earnings: Evidence from the UK house of commons}.'' {\em Journal of Politics} 83(2):706--721.
+
+\harvarditem{Xu}{2023}{Xu2023}
+Xu, Yiqing. 2023.
+\newblock Causal Inference with Time-Series Cross-Sectional Data: A Reflection.  In {\em The Oxford Handbook of Methodological Pluralism in Political Science}.
+\newblock Oxford:  Oxford University Press chapter~30.
+
+\harvarditem[Zhang et~al.]{Zhang, Zhang, Liu \harvardand\ Shih}{2021}{Zhang2021jop}
+Zhang, Qi, Dong Zhang, Mingxing Liu \harvardand\ Victor Shih. 2021.
+\newblock ``{Elite cleavage and the rise of capitalism under authoritarianism: A tale of two provinces in china}.'' {\em Journal of Politics} 83(3):1010--1023.
+
+\end{thebibliography}

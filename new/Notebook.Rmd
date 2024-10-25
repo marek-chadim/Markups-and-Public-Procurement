@@ -1,0 +1,438 @@
+---
+title: "Replication Notebook"
+output:
+  html_notebook: default
+---
+
+# "Double Machine Learning based Program Evaluation under Unconfoundedness"
+## Michael C. Knaus
+### Version 3
+
+This Notebook replicates the main results of the [paper](https://arxiv.org/abs/2003.03191). The notebook should help to show the underlying code for researchers interested in replicating the analysis using the [same data](https://forsbase.unil.ch/project/study-public-overview/17035/1/) or adapting it to new datasets.
+
+The explanations throughout the notebook are kept short. Please see the [paper](https://arxiv.org/abs/2003.03191) for more explanations regarding the parameters of interest and their Double Machine Learning based estimation.
+
+It is indicated in **bold** if a chunk reproduces a Table or graph of the paper.
+
+Click on the "Code" button on the top right of this notebook to "Hide All Code" and see only the results or "Download Rmd" to extract the underlying code.
+
+Running the analyses in this notebook took roughly one week on a [SWITCHengine](https://www.switch.ch/engines/) with eight cores and 32 GB RAM (bottlenecks are the kernel regressions and the depth three policy trees).
+
+
+<br>
+<br>
+
+## Preparation
+
+The analysis is mostly based on the *[causalDML](https://github.com/MCKnaus/causalDML)* R-package that was developed in parallel to the paper. The preparation of the *"Database_SALMP_MCK2020.Rdata"* that is loaded can be replicated by requesting the [data via FORSbase](https://forsbase.unil.ch/project/study-public-overview/17035/1/) and running the [data preparation file](https://github.com/MCKnaus/mcknaus.github.io/blob/master/assets/code/Data_preparation_MCK2020.R).
+
+
+```{r message = FALSE, warning = FALSE}
+
+## Load relevant packages, in case you did not yet install causalDML uncomment the next two lines
+# library(devtools)
+# install_github(repo="MCKnaus/causalDML")
+library(causalDML)     # version 0.1.0
+library(DiagrammeRsvg) # version 0.1
+library(estimatr)      # version 0.30.4
+library(grf)           # version 2.0.2
+library(matrixStats)   # version 0.61.0
+library(plyr)          # version 1.8.6
+library(policytree)    # version 1.1.1
+library(tidyverse)     # version 1.3.1
+
+## Define and set seed
+seed = 1234
+set.seed(seed)
+
+## Set to path where data are stored for replication
+setwd("C:/Users/Administrator/switchdrive/Papers/Multi Treat Labor/Paper/Data")
+load("Database_SALMP_MCK2020.Rdata")
+```
+
+<br>
+<br>
+
+# Average effects
+
+The *DML_aipw* command estimates first the cross-fitted nuisance parameters and uses them to calculate the double robust scores for APO and ATE, which are then used to estimate the APO and ATE(T).
+
+```{r message = FALSE, warning = FALSE}
+# Create the ML method to be used for nuisance parameter prediction
+forest = create_method("forest_grf",args=list(tune.parameters = "all",seed=seed))
+
+# Run the main function that outputs nuisance parameters, APO and ATE
+cDML = DML_aipw(y,w,x,ml_w=list(forest),ml_y=list(forest))
+```
+
+<br>
+<br>
+
+## Average potential outcome (APO)
+
+The following table and plot shows the DML estimated APOs.
+
+```{r}
+summary(cDML$APO)
+plot(cDML$APO,label_w)
+```
+
+<br>
+<br>
+
+
+## Average treatment effects (ATE and ATET)
+
+### ATE
+
+The following table shows the results of all possible ATEs given the five different treatments:
+
+```{r}
+summary(cDML$ATE)
+```
+
+<br>
+
+### ATET
+
+The following tables show the results for all possible ATETs given the five different treatments. The first line shows for example an effect of -1.045 for being in a job search program vs. no program for *those who were actually observed in no program*, or formally adapting the notation of the paper $E[Y(jo b~search) - Y(no~program) \mid W = no~program]$. As we can condition on all five programs, we get five tables:
+
+```{r}
+# Estimate ATETs for the programs
+atets = matrix(NA,4,2)
+for (i in 1:5) {
+  print(label_w[i])
+  APO_atet = APO_dml_atet(y,cDML$APO$m_mat,cDML$APO$w_mat,cDML$APO$e_mat,cDML$APO$cf_mat,treated=i)
+  ATET = ATE_dml(APO_atet)
+  summary(ATET)
+  atets[i-1,] = ATET$results[i-1,1:2]
+}
+```
+
+<br>
+<br>
+
+
+The numbers above are condensed into **Figure 2** in the paper:
+
+```{r}
+# Plot ATE and ATET together
+ates = cDML$ATE$results[1:4,1:2]
+df = data.frame(Estimand = c(rep("ATE",4),rep("ATET",4)),
+                program = factor(rep(label_w[-1],2),label_w[-1]),
+                effect = c(ates[,1],atets[,1]))
+df$low = df$effect - 1.96 * c(ates[,2],atets[,2])
+df$up = df$effect + 1.96 * c(ates[,2],atets[,2])
+
+ggplot(data = df,mapping = aes(x = program, y = effect,ymin = low,
+                                   ymax = up,group = Estimand, linetype = Estimand)) +
+          geom_point(size=2,position = position_dodge(width = 0.4)) +  
+          geom_errorbar(width=0.2,position = position_dodge(width = 0.4))  + 
+          theme_bw() + theme(axis.text.x = element_text(angle = 45, hjust = 1),axis.title.x=element_blank()) +
+          ylab("Average treatment effects") + geom_hline(yintercept = 0) +
+          theme(text=element_text(family="serif",size = 14, colour="black")) 
+```
+
+<br>
+<br>
+<br>
+
+# Heterogeneous effects
+
+The output of the *DML_aipw* command contains an *APO_dml* object and an *ATE_dml* object that carry a *gamma* and *delta* matrix storing the doubly robust APO and ATE scores, respectively. The *delta* matrix of the *ATE_dml* object can be used to conveniently estimate heterogeneous effects.
+
+## GATEs
+
+Group average treatment effects (GATEs) represent the average effects in different subgroups. Such subgroup analyses are an integral part of most program evaluations and usually require to rerun the preferred method in subsamples. Using the doubly robust ATE score as pseudo outcome in a standard OLS regression and a group indicator as explanatory variable estimates GATEs.
+
+The results shown in the following are very similar to those presented in **Table 4** of the paper:
+
+### Gender
+
+**Table 4 Panel A:**
+
+```{r}
+# GATEs female
+for (i in 1:4) {
+  cat(paste("\n\n",label_w[i+1]),":\n")
+  temp_ols = lm_robust(cDML$ATE$delta[,i] ~ z_blp$female)
+  print(summary(temp_ols))
+}
+```
+
+<br>
+
+### Foreigner
+
+**Table 4 Panel B:**
+
+```{r}
+# GATEs foreigner
+for (i in 1:4) {
+   cat(paste("\n\n",label_w[i+1]),":\n")
+  temp_ols = lm_robust(cDML$ATE$delta[,i] ~ z_blp$foreigner)
+  print(summary(temp_ols))
+}
+```
+<br>
+
+
+### Employability
+
+**Table 4 Panel C:**
+
+```{r}
+# GATEs employability
+for (i in 1:4) {
+   cat(paste("\n\n",label_w[i+1]),":\n")
+  temp_ols = lm_robust(cDML$ATE$delta[,i] ~ z_blp$employability)
+  print(summary(temp_ols))
+}
+```
+
+<br>
+<br>
+
+## Best linear prediction of GATE
+
+We can also model effect heterogeneity in a multivariate OLS. Again the ATE score is reused as a pseudo-outcome in a plain vanilla OLS regression with heteroscedasticity robust standard errors. This replicates the results of **Table 5**:
+
+
+```{r}
+## BLP CATEs
+for (i in 1:4) {
+  cat(paste("\n\n",label_w[i+1]),":\n")
+  temp_df = data.frame(y = cDML$ATE$delta[,i])
+  temp_df = cbind(temp_df,z_blp)
+  temp_ols = lm_robust(as.formula("y ~ ."),data = temp_df)
+  print(summary(temp_ols))
+}
+rm(temp_df,temp_ols)
+```
+
+<br>
+<br>
+
+## Kernel regression GATEs
+
+Next, we reuse the ATE score as pseudo outcome in a one-dimensional kernel regression. The  *[causalDML](https://github.com/MCKnaus/causalDML)* package implements this based on the *[np](https://cran.r-project.org/web/packages/np/index.html)* package.
+
+```{r message = FALSE, warning = FALSE}
+## Kernel regression CATEs
+list_kr_cates_inc = vector("list",4)
+for (i in 1:4) {
+  list_kr_cates_inc[[i]] = kr_cate(cDML$ATE$delta[,i],x[,"past_income"])
+}
+```
+
+The figures show the results in the following order: job search (**Figure 3 (a)**), vocational (**Figure 3 (c)**), computer (**Figure 3 (e)**) and language (**Figure 3 (g)**):
+
+```{r}
+# Plot Kernel regression CATEs
+for (i in 1:4) {
+  print(plot(list_kr_cates_inc[[i]],z_label="Past income",yrange=c(-5,10)))
+}
+```
+
+<br>
+<br>
+
+## Series regression GATEs
+
+Next, we reuse the ATE score as pseudo outcome in a one-dimensional series regression. The  *[causalDML](https://github.com/MCKnaus/causalDML)* package implements this based on the *[crs](https://cran.r-project.org/web/packages/crs/index.html)* package.
+
+```{r  message = FALSE, warning = FALSE}
+## Series regression GATEs
+list_sr_cates_inc = vector("list",4)
+for (i in 1:4) {
+  list_sr_cates_inc[[i]] = spline_cate(cDML$ATE$delta[,i],x[,"past_income"])
+}
+```
+
+
+The figures show the results in the following order: job search (**Figure 3 (b)**), vocational (**Figure 3 (d)**), computer (**Figure 3 (f)**) and language (**Figure 3 (h)**):
+
+```{r}
+# Plot Series regression GATEs
+for (i in 1:4) {
+  print(plot(list_sr_cates_inc[[i]],z_label="Past income",yrange=c(-5,10)))
+}
+```
+
+<br>
+<br>
+
+## Individualized average treatment effects
+
+We further predict the individualized average treatment effects (IATEs) using the DR- and the NDR-learner. Like in the paper, we focus on the out-of-sample variant described in Algorithms 1 and 2 of the paper that are implemented using the *ndr_learner* function of the *[causalDML](https://github.com/MCKnaus/causalDML)* package.
+
+```{r message = FALSE, warning = FALSE}
+## (N)DR-learner
+ndr = ndr_learner(y,w,x,ml_w = list(forest),ml_y = list(forest),ml_tau = list(forest),compare_all = FALSE)
+```
+
+<br>
+<br>
+
+This produces **Figure 5**:
+
+```{r}
+# Plot the results
+df_box = NULL
+for (i in 1:4) {
+  df = data.frame("DRL" = ndr$cates[i,,1], "NDRL" = ndr$cates[i,,2])
+  df = gather(df)
+  df = cbind(label_w[i+1],df)
+  colnames(df)[1] = "label"
+  df_box = rbind(df_box,df)
+}
+ggplot(data=df_box) + geom_boxplot( aes(x=factor(label,label_w[-1]),y=value,fill=key)) +
+  theme_bw() + theme(axis.title.x=element_blank(),legend.title = element_blank()) +
+  ylab("Individualized average treatment effect") + geom_hline(yintercept = 0) + geom_hline(yintercept = -31,linetype="dashed") +
+  geom_hline(yintercept = 31,linetype="dashed") +
+  theme(text=element_text(family="serif",size = 16, colour="black"),axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  scale_fill_grey(start = 0.9,end=0.4)
+```
+
+<br>
+
+This replicates **Table 6**:
+
+```{r}
+# Classification analysis
+diff = matrix(NA,ncol(x),4)
+rownames(diff) = label_x
+colnames(diff) = label_w[-1]
+for (i in 1:4) {
+  diff[,i] = clan(ndr$cates[i,,2],scale(x))[,5][-1] - clan(ndr$cates[i,,2],scale(x))[,1][-1]
+}
+round(diff[order(rowMaxs(abs(diff)),decreasing=T),][1:7,],digits=2)
+```
+
+<br>
+<br>
+<br>
+
+## Optimal assigment rules
+
+Finally, the *gamma* matrix of the *APO_dml* object can be used as input for the *[policytree](https://cran.r-project.org/web/packages/policytree/index.html)* R package.
+
+```{r message = FALSE, warning = FALSE}
+## Estimate optimal assignment rule estimation
+# Depth one
+pt_low1 = policy_tree(x_pt_low,cDML$APO$gamma,depth = 1)
+pt_high1 = policy_tree(x_pt_high,cDML$APO$gamma,depth = 1)
+
+# Depth two
+pt_low2 = policy_tree(x_pt_low,cDML$APO$gamma,depth = 2)
+pt_high2 = policy_tree(x_pt_high,cDML$APO$gamma,depth = 2)
+```
+
+For the depth three tree, we round past income to CHF 1000 to speed up computation:
+
+
+```{r message = FALSE, warning = FALSE}
+# Depth three
+# Round past income variable to 1000 such that it runs in finite time
+x_pt_low_round = x_pt_low
+x_pt_low_round[,5] = round_any(x_pt_low[,5],1000)
+pt_low3 = policy_tree(x_pt_low_round,cDML$APO$gamma,depth = 3)
+x_pt_high_round = x_pt_high
+x_pt_high_round[,3] = round_any(x_pt_high[,3],1000)
+pt_high3 = policy_tree(x_pt_high_round,cDML$APO$gamma,depth = 3)
+```
+
+<br>
+<br>
+
+This replicates the four subgraphs of **Figure 5**:
+
+
+```{r}
+## Plot optimal assignment rule estimation
+plot(pt_low1,label_w)
+plot(pt_high1,label_w)
+plot(pt_low2,label_w)
+plot(pt_high2,label_w)
+```
+
+
+
+<br>
+<br>
+
+This replicates **Panel A of Table 7**:
+
+```{r}
+# Panel A
+table(predict(pt_low1,newdata=x_pt_low)) / length(y) * 100
+table(predict(pt_low2,newdata=x_pt_low)) / length(y) * 100
+table(predict(pt_low3,newdata=x_pt_low)) / length(y) * 100
+table(predict(pt_high1,newdata=x_pt_high)) / length(y) * 100
+table(predict(pt_high2,newdata=x_pt_high)) / length(y) * 100
+table(predict(pt_high3,newdata=x_pt_high)) / length(y) * 100
+```
+
+<br>
+<br>
+
+Finally, we apply a short program to cross-validate the policy trees.
+
+```{r message = FALSE, warning = FALSE}
+## Cross-validate trees
+# Short program implementing the cross-validation of trees
+cv_policy_tree = function(APO_dml,x,...) {
+  nfolds = ncol(APO_dml$cf_mat)
+  folds = APO_dml$cf_mat
+  
+  list_trees = vector("list",nfolds)
+  cv_policy = matrix(NA,nrow(APO_dml$cf_mat),nfolds)
+  cv_gamma = rep(0,nrow(APO_dml$cf_mat))
+  
+  for (i in 1:nfolds) {
+    list_trees[[i]] = policy_tree(x[folds[,i]==0,],APO_dml$gamma[folds[,i]==0,],...)
+    cv_policy[,i] = predict(list_trees[[i]],x)
+    for (j in 1:ncol(APO_dml$gamma)) {
+      cv_gamma[folds[,i]==1] = cv_gamma[folds[,i]==1] + (cv_policy[folds[,i]==1,i] == j) * APO_dml$gamma[folds[,i]==1,j]
+    }
+  }
+  list("trees"=list_trees,"policy_mat"=cv_policy,"gamma"=cv_gamma)
+}
+
+cv_pt_low1 = cv_policy_tree(cDML$APO,x_pt_low,depth = 1)
+cv_pt_high1 = cv_policy_tree(cDML$APO,x_pt_high,depth = 1)
+cv_pt_low2 = cv_policy_tree(cDML$APO,x_pt_low,depth = 2)
+cv_pt_high2 = cv_policy_tree(cDML$APO,x_pt_high,depth = 2)
+cv_pt_low3 = cv_policy_tree(cDML$APO,x_pt_low_round,depth = 3)
+cv_pt_high3 = cv_policy_tree(cDML$APO,x_pt_high_round,depth = 3)
+```
+
+
+<br>
+<br>
+
+This replicates the results shown in **Panel B of Table 7**:
+
+```{r}
+# Panel B
+cat("\n Depth 1 & 5 variables \n")
+cv_resultsl1 = summary(lm(cv_pt_low1$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsl1[[i]]$coefficients)
+cat("\n Depth 2 & 5 variables \n")
+cv_resultsl2 = summary(lm(cv_pt_low2$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsl2[[i]]$coefficients)
+cat("\n Depth 3 & 5 variables \n")
+cv_resultsl3 = summary(lm(cv_pt_low3$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsl3[[i]]$coefficients)
+cat("\n Depth 1 & 16 variables \n")
+cv_resultsh1 = summary(lm(cv_pt_high1$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsh1[[i]]$coefficients)
+cat("\n Depth 2 & 16 variables \n")
+cv_resultsh2 = summary(lm(cv_pt_high2$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsh2[[i]]$coefficients)
+cat("\n Depth 3 & 16 variables \n")
+cv_resultsh3 = summary(lm(cv_pt_high3$gamma - cDML$APO$gamma ~ 1))
+for (i in 1:5) print(cv_resultsh3[[i]]$coefficients)
+```
+
+

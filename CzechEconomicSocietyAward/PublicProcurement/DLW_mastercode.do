@@ -30,7 +30,7 @@ xtset id year, yearly
 * Run DLW_procedure.do on data and recover Translog and Cobb-Douglas parameters
 * (and bootstrapped st. err.), estimates of markups (mu), and productivity (omega)
 set seed 42
-*do DLW_procedure.do
+do DLW_procedure.do
 use markups, clear
 
 *-------------------------------------------------------------------------------*
@@ -145,9 +145,9 @@ nlcom _b[entry_effect]*exp(_b[_cons])
 
 *Markups and Public Procurement: digging deeper
 xi: reg lmu i.pp_dummy*i.year cogs k i.year*i.nace2, cluster(id)
-xi: reg lmu i.pp_dummy*i.nace42 cogs k i.year*i.nace2, cluster(id)
+xi: reg lmu i.pp_dummy*i.nace2 cogs k i.year*i.nace2, cluster(id)
 
-xi: reg lmu i.pp_dummy*i.sole_proprietor  cogs k i.year*i.nace2, cluster(id)
+xi: reg lmu i.pp_dummy*i.sole_proprietor cogs k i.year*i.nace2, cluster(id)
 * coefficients on interaction term give markup premium for a subject type and subsector
 
 *------------------------------------------------------------------------------*

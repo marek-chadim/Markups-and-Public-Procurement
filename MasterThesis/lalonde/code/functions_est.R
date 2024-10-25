@@ -16,7 +16,6 @@ quiet <- function(x) {
   invisible(force(x)) 
 } 
 
-covar <- c("empl", "year", "nace2", "legal", "subject", "sector", "xmu1", "xmu2", "xmu3", "xmu4", "xmu5", "xmu6")
 # full dataset
 #                       $$\     $$\                          $$\                                   
 #                       $$ |    \__|                         $$ |                                  

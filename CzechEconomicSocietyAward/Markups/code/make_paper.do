@@ -12,7 +12,7 @@ clear all
 set more off
 set scheme lean2
 if "`c(username)'"=="chadi" {
-	local dropbox "~/OneDrive - Handelshögskolan i Stockholm/MarkupsAndPublicProcurement/Markups-and-Public-Procurement/Markups/"
+	local dropbox "~/OneDrive - Handelshögskolan i Stockholm/MarkupsAndPublicProcurement/Markups-and-Public-Procurement/CzechEconomicSocietyAward/Markups/"
 	}
 global dropbox  = "`dropbox'"
 global bootreps = 2

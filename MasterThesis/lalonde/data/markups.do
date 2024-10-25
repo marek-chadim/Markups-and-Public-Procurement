@@ -1,36 +1,44 @@
 use markups, clear
 xtset id year
 sort id year
-gen y1 = ln(markup) 
-gen x1 = L6.y1
-gen x2 = L5.y1
-gen x3 = L4.y1
-gen x4 = L3.y1
-gen x5 = L2.y1
-gen x6 = L1.y1
-gen dy = y1-x6
-
-gen dpp = pp_dummy-L.pp_dummy
-gen ldpp= L.dpp
-bysort id : egen dpp_mean= mean(ldpp)
-
-gen lpp1 = L.pp_dummy
-gen lpp2 = L.lpp1
-gen lpp3 = L.lpp2
-gen lpp4 = L.lpp3
-bysort id : egen pp_history= mean(lpp4 == 1)
-
+bys id: gen nyear=[_N]
+tab nyear, gen(nyear)
+drop if nyear<16
+rename pp_dummy pp
+bysort id: gen D= pp[1]
+drop if D==1
+gen lmu = ln(markup)
+gen x1 = L6.lmu
+gen x2 = L5.lmu
+gen x3 = L4.lmu
+gen x4 = L3.lmu
+gen x5 = L2.lmu
+gen x6 = L1.lmu
+gen y0 = lmu
+gen y1 = F.lmu
+gen fpp = F.pp
+gen y2 = F2.lmu
+tab nace2, gen(nace4)
+tab year, gen(year)
+drop year1
 drop costs assets sales
+bysort id: gen sales = L4.go
 bysort id: gen costs = L4.cogs
 bysort id: gen assets= L4.k
-bysort id: gen wages = L4.w
-bysort id: gen sales = L4.go
+bysort id: gen beta= L4.betahat_tl
+bysort id: gen omega= L4.omegahat_tl
+bysort id: gen mu= L4.markup
+replace empl_num = 0 if empl_num==.
+bysort id: replace empl=L4.empl_num
+gen pp1=L1.pp
+gen pp2=L2.pp
+gen pp3=L3.pp
+gen pp4=L4.pp
+drop if pp4==.
 
-bysort id: keep if x1!=.
+tabstat pp_sales pp, stat(sum) by(year)
 
-
-tabstat id, stat(N) by(year)
-
-export excel id year x* y1 dy *pp*  nace2 *costs *sales *assets *wages ///
-  empl sector using "data", firstrow(variables) nolabel replace
-  
+keep id year year2-year16 nace42 nace43 x1-x6 y0 y1 y2 pp pp1-pp4 costs sales assets empl beta omega mu
+missings report
+export delimited  ///
+using "data", nolabel replace
