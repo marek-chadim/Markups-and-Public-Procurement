@@ -3,10 +3,10 @@
 
 ## Methodology and replication package reference: 
 
-- Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
+
 - DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
 - DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
-
+- Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
 
 ### Master Thesis (in progress)
 
