@@ -21,6 +21,8 @@ reducing political favoritism in public procurement in the Czech Republic.
   <img src="/Rplot01.png"/>
   <img src="/Rplot03.png"/> 
   <img src="/Rplot02.png"/>
+  <img src="/estimators_example.png"/> 
+  <img src="/sensitivity_plot3.png"/>
 </p>
 
 
