@@ -1,16 +1,25 @@
 
 # Markups and Public Procurement.
 
-## Methodology and replication package reference: 
-
-
+## Main references: 
 - DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
 - DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
-- Guido Imbens, Yiqing Xu [LaLonde (1986) after Nearly Four Decades: Lessons Learned](https://arxiv.org/abs/2406.00827)
+- Imbens, G. and Xu, Y. (2024). [Lalonde (1986) after nearly four decades: Lessons learned](https://arxiv.org/abs/2406.00827). 
+- Arkhangelsky, D. and Imbens, G. (2024). [Causal models for longitudinal and panel data: a survey](https://arxiv.org/abs/2311.15458).
 
-### Master Thesis (in progress)
+### Master Thesis Abstract
+This paper examines the evolution of market power in the Czech construction sector using firm-
+level data from 2006 to 2021. By linking these data with government procurement records,
+this study investigates the relationship between markups and public procurement. The findings
+reveal a decline in aggregate markups, primarily driven by firms in the upper tail of the markup
+distribution. On average, government contractors exhibit higher markups than private sector
+firms, and markups increase when firms begin participating in the public procurement market.
+The study identifies the average treatment effect of public procurement on contractor markups
+under both selection on observables and unobservables. The results highlight heterogeneity
+in the treatment effects and a decreasing trend in the public procurement markup premium,
+suggesting improvements in efficiency in Czech public construction spending over time.
 
-I employ a methodology that conditions on lagged outcome values (Xu and Imbens, 2024). In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. Using matched data, I balance these variables and conduct placebo tests, which confirm no effect on markups in the years before firms acquire government contracts. I also apply recent advances in causal panel data analysis. This section addresses (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies—including synthetic DID, interactive fixed effects, and matrix completion—drawing (Arkhangelsky and Imbens, 2024).
+- JEL C23, D22, H57, L74
 
 <p float="left">
   <img src="/Rplot01.png"/>
