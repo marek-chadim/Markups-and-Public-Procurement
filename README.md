@@ -10,7 +10,7 @@
 
 ### Master Thesis (in progress)
 
-I employ a methodology that conditions on lagged outcome values (Xu and Imbens, 2024). In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. Using matched data, I balance these variables and conduct placebo tests, which confirm no effect on markups in the years before firms acquire government contracts. I aim to compare the unconfoundedness approach outlined above by applying recent advances in causal panel data analysis. This section addresses (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies—including synthetic DID, interactive fixed effects, and matrix completion—drawing (Arkhangelsky and Imbens, 2024).
+I employ a methodology that conditions on lagged outcome values (Xu and Imbens, 2024). In the data, firms entering public procurement in the current year already demonstrate higher markups in previous years, alongside larger sales, costs of goods sold, and capital. Using matched data, I balance these variables and conduct placebo tests, which confirm no effect on markups in the years before firms acquire government contracts. I also apply recent advances in causal panel data analysis. This section addresses (1) heterogeneity-robust estimators, (2) tests and sensitivity analyses for parallel trends, and (3) alternative identification strategies—including synthetic DID, interactive fixed effects, and matrix completion—drawing (Arkhangelsky and Imbens, 2024).
 
 <p float="left">
   <img src="/Rplot01.png"/>
