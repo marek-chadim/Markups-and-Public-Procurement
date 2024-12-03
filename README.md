@@ -1,25 +1,21 @@
 
-# Markups and Public Procurement.
-
+# Markups and Public Procurement
+- JEL C23, D22, H57, L74
+  
 ## Main references: 
 - DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
 - DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
 - Imbens, G. and Xu, Y. (2024). [Lalonde (1986) after nearly four decades: Lessons learned](https://arxiv.org/abs/2406.00827). 
 - Arkhangelsky, D. and Imbens, G. (2024). [Causal models for longitudinal and panel data: a survey](https://arxiv.org/abs/2311.15458).
 
-### Master Thesis Abstract
-This paper examines the evolution of market power in the Czech construction sector using firm-
-level data from 2006 to 2021. By linking these data with government procurement records,
-this study investigates the relationship between markups and public procurement. The findings
-reveal a decline in aggregate markups, primarily driven by firms in the upper tail of the markup
-distribution. On average, government contractors exhibit higher markups than private sector
-firms, and markups increase when firms begin participating in the public procurement market.
-The study identifies the average treatment effect of public procurement on contractor markups
-under both selection on observables and unobservables. The results highlight heterogeneity
-in the treatment effects and a decreasing trend in the public procurement markup premium,
-suggesting improvements in efficiency in Czech public construction spending over time.
-
-- JEL C23, D22, H57, L74
+### Master Thesis 
+For my master’s thesis, I aim to address selection bias in the average comparisons between private-sector-only
+firms and government contractors. First, I assume that selection depends only on observable lagged
+outcomes and pre-treatment covariates, within a trimmed sample with sufficient overlap in the
+propensity score. Second, I control unobservable time-invariant confounders using recent causal panel
+data methods. My analysis demonstrates a declining trend in the treatment effect for government
+contractors, offering empirical evidence in favor of reforms aimed at curbing single-bidding practices and
+reducing political favoritism in public procurement in the Czech Republic. 
 
 <p float="left">
   <img src="/Rplot01.png"/>
