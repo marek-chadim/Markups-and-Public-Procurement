@@ -46,7 +46,10 @@ firms; and firm-level markups increase by 12% upon a firm’s entry into public 
 </p>
 
 
-### Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
+### Bachelor's thesis, Charles University in Prague. DOI: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
-
+For my undergraduate thesis, I estimated production functions for firms in the Czech construction sector, addressing
+endogeneity in productivity shocks and variable input usage using the control function approach and
+GMM. A key contribution of this work was the creation of a novel dataset as well as the structural
+inference of the markup distribution. 
 
