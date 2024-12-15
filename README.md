@@ -1,15 +1,14 @@
 
 # Markups and Public Procurement
-- JEL C23, D22, H57, L74
   
-## Main references: 
+### References: 
 - DLW 2012 [Markups and Firm-Level Export Status](https://www.aeaweb.org/articles?id=10.1257/aer.102.6.2437)
 - DLEU 2020 [The Rise of Market Power and the Macroeconomic Implications](https://academic.oup.com/qje/article/135/2/561/5714769?login=true)
 - Imbens, G. and Xu, Y. (2024). [Lalonde (1986) after nearly four decades: Lessons learned](https://arxiv.org/abs/2406.00827). 
 - Arkhangelsky, D. and Imbens, G. (2024). [Causal models for longitudinal and panel data: a survey](https://arxiv.org/abs/2311.15458).
 
-### Master Thesis 
-For my master’s thesis, I aim to address selection bias in the average comparisons between private-sector-only
+## Master Thesis 
+I aim to address selection bias in the average comparisons between private-sector-only
 firms and government contractors. First, I assume that selection depends only on observable lagged
 outcomes and pre-treatment covariates, within a trimmed sample with sufficient overlap in the
 propensity score. Second, I control unobservable time-invariant confounders using recent causal panel
@@ -47,14 +46,10 @@ firms; and firm-level markups increase by 12% upon a firm’s entry into public 
 </p>
 
 
-### Bachelor's thesis, Charles University in Prague. doi: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
+### Bachelor's thesis, Charles University in Prague. DOI: [dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/184831#xmluiArtifactToplinksNavigationhead_all_of_dspace_links)
 
-Abstract:
-
-This thesis analyses the relationship between engagement in public procurement and markups charged by firms. While controlling for aggregate trends
-and individual firm characteristics, the effect is estimated in a multivariate
-regression framework as the percentage markup premium associated with engagement in public procurement. This approach contributes to the existing literature on public procurement, in that, rather than only making comparisons
-between different tenders, it benchmarks the competitiveness of public procurement against the competitiveness in markets serving private clients while not
-having to rely on data on expert cost estimates.
-
+For my undergraduate thesis, I estimated production functions for firms in the Czech construction sector, addressing
+endogeneity in productivity shocks and variable input usage using the control function approach and
+GMM. A key contribution of this work was the creation of a novel dataset as well as the structural
+inference of the markup distribution. 
 
