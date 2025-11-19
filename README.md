@@ -30,7 +30,7 @@ Czech Republic and offer empirical evidence of increasing efficiency in public s
   <img src="/Rplot03.png"/> 
   <img src="/Rplot02.png"/>
   <img src="/estimators_example.png"/> 
-  <img src="/sensitivity_plot3.png"/>
+  <img src="/sensitivity.png"/>
 </p>
 
 

@@ -1,0 +1,227 @@
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Unlimited-user 4-core network, expiring  1 Jul 2026
+Serial number: 501909301221
+  Licensed to: Marek Chadim
+               Yale University
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
+
+. do markups.do 
+
+. use markups, clear
+
+. xtset id year
+
+Panel variable: id (unbalanced)
+ Time variable: year, 2006 to 2021, but with gaps
+         Delta: 1 unit
+
+. sort id year
+
+. bys id: gen nyear=[_N]
+
+. tab nyear, gen(nyear)
+
+      nyear |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        187        2.58        2.58
+          2 |        310        4.27        6.84
+          3 |        444        6.11       12.96
+          4 |        572        7.88       20.84
+          5 |        625        8.61       29.44
+          6 |        492        6.78       36.22
+          7 |        595        8.19       44.42
+          8 |        576        7.93       52.35
+          9 |        621        8.55       60.90
+         10 |        640        8.81       69.71
+         11 |        484        6.67       76.38
+         12 |        408        5.62       82.00
+         13 |        377        5.19       87.19
+         14 |        126        1.74       88.93
+         15 |        180        2.48       91.41
+         16 |        624        8.59      100.00
+------------+-----------------------------------
+      Total |      7,261      100.00
+
+. drop if nyear<16
+(6,637 observations deleted)
+
+. rename pp_dummy pp
+
+. bysort id: gen D= pp[1]
+
+. drop if D==1
+(208 observations deleted)
+
+. gen lmu = ln(markup)
+
+. gen x1 = L6.lmu
+(156 missing values generated)
+
+. gen x2 = L5.lmu
+(130 missing values generated)
+
+. gen x3 = L4.lmu
+(104 missing values generated)
+
+. gen x4 = L3.lmu
+(78 missing values generated)
+
+. gen x5 = L2.lmu
+(52 missing values generated)
+
+. gen x6 = L1.lmu
+(26 missing values generated)
+
+. gen y0 = lmu
+
+. gen y1 = F.lmu
+(26 missing values generated)
+
+. gen fpp = F.pp
+(26 missing values generated)
+
+. gen y2 = F2.lmu
+(52 missing values generated)
+
+. tab nace2, gen(nace4)
+
+subindustry |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         41 |        208       50.00       50.00
+         42 |         32        7.69       57.69
+         43 |        176       42.31      100.00
+------------+-----------------------------------
+      Total |        416      100.00
+
+. tab year, gen(year)
+
+       Year |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       2006 |         26        6.25        6.25
+       2007 |         26        6.25       12.50
+       2008 |         26        6.25       18.75
+       2009 |         26        6.25       25.00
+       2010 |         26        6.25       31.25
+       2011 |         26        6.25       37.50
+       2012 |         26        6.25       43.75
+       2013 |         26        6.25       50.00
+       2014 |         26        6.25       56.25
+       2015 |         26        6.25       62.50
+       2016 |         26        6.25       68.75
+       2017 |         26        6.25       75.00
+       2018 |         26        6.25       81.25
+       2019 |         26        6.25       87.50
+       2020 |         26        6.25       93.75
+       2021 |         26        6.25      100.00
+------------+-----------------------------------
+      Total |        416      100.00
+
+. drop year1
+
+. drop costs assets sales
+
+. bysort id: gen sales = L4.go
+(104 missing values generated)
+
+. bysort id: gen costs = L4.cogs
+(104 missing values generated)
+
+. bysort id: gen assets= L4.k
+(104 missing values generated)
+
+. bysort id: gen beta= L4.betahat_tl
+(104 missing values generated)
+
+. bysort id: gen omega= L4.omegahat_tl
+(104 missing values generated)
+
+. bysort id: gen mu= L4.markup
+(104 missing values generated)
+
+. replace empl_num = 0 if empl_num==.
+(0 real changes made)
+
+. bysort id: replace empl=L4.empl_num
+(416 real changes made, 104 to missing)
+
+. gen pp1=L1.pp
+(26 missing values generated)
+
+. gen pp2=L2.pp
+(52 missing values generated)
+
+. gen pp3=L3.pp
+(78 missing values generated)
+
+. gen pp4=L4.pp
+(104 missing values generated)
+
+. drop if pp4==.
+(104 observations deleted)
+
+. 
+. tabstat pp_sales pp, stat(sum) by(year)
+
+Summary statistics: Sum
+Group variable: year (Year)
+
+    year |  pp_sales        pp
+---------+--------------------
+    2010 |  2.20e+09         7
+    2011 |  2.67e+08         8
+    2012 |  6.03e+08         9
+    2013 |  2.82e+09        13
+    2014 |  1.11e+09        11
+    2015 |  8.38e+08        14
+    2016 |  5.93e+08        12
+    2017 |  1.99e+09        17
+    2018 |  5.05e+09        17
+    2019 |  3.84e+09        15
+    2020 |  2.98e+09        15
+    2021 |  3.60e+09        13
+---------+--------------------
+   Total |  2.59e+10       151
+------------------------------
+
+. 
+. keep id year year2-year16 nace42 nace43 x1-x6 y0 y1 y2 pp pp1-pp4 costs sales
+>  assets empl beta omega mu
+
+. missings report
+
+Checking missings in all variables:
+104 observations with missing values
+
+  +----------------+
+  |      # missing |
+  |----------------|
+  | x1          52 |
+  | x2          26 |
+  | y1          26 |
+  | y2          52 |
+  +----------------+
+
+. export delimited  ///
+> using "data", nolabel replace
+(file data.csv not found)
+file data.csv saved
+
+. 
+end of do-file
