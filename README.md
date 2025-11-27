@@ -1,7 +1,6 @@
 # Markups and Public Procurement
 
-### MSs thesis, Stockholm School of Economics in Prague. 
-DOI: [hhs.primo.exlibrisgroup.com (https://hhs.primo.exlibrisgroup.com/permalink/46SSOE_INST/hejhp1/alma991001619398206056)
+### MSs thesis, Stockholm School of Economics. DOI: [hhs.primo.exlibrisgroup.com](https://hhs.primo.exlibrisgroup.com/permalink/46SSOE_INST/hejhp1/alma991001619398206056)
 
 ## Abstract:
 
